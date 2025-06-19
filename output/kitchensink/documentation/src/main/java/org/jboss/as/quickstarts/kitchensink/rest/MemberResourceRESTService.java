@@ -37,35 +37,31 @@ import java.util.List;
 import java.util.logging.Logger;
 
 /**
- * MemberResourceRESTService is a RESTful service that provides endpoints to manage members in the system.
- * <p>
- * This class allows clients to perform CRUD operations on members, including creating new members,
- * retrieving member details, and deleting members. It uses Spring's REST capabilities and is designed
- * to interact with a member repository for data persistence.
- * </p>
+ * MemberResourceRESTService
+ * <p/>
+ * This class produces a RESTful service to read/write the contents of the members table.
+ * It provides endpoints to list all members, lookup a member by ID, delete a member by ID,
+ * and create a new member. The service utilizes the MemberRepository for data access and
+ * MemberRegistration for member registration logic.
  * 
- * <p>
- * The service is thread-safe as it does not maintain any mutable state and relies on stateless
- * components for its operations.
- * </p>
+ * Design Patterns: This class follows the REST architectural pattern and uses the 
+ * Dependency Injection pattern for managing dependencies.
  * 
- * <p>
  * Author: Red Hat, Inc.
  * Version: 1.0
  * Since: 2015
- * </p>
  * 
- * <p>
- * Related Classes: Member, MemberRepository, MemberRegistration
- * </p>
+ * Related Classes: 
+ * - MemberRepository: Interface for member data access.
+ * - Member: Model class representing a member.
+ * - MemberRegistration: Service class for member registration logic.
  * 
- * <p>
  * Usage Example:
- * <pre>
- *     MemberResourceRESTService service = new MemberResourceRESTService(logger, memberRepository, memberRegistration);
- *     List<Member> members = service.listAllMembers();
- * </pre>
- * </p>
+ * - To list all members: GET /api/members
+ * - To create a new member: POST /api/members with Member JSON in the request body.
+ * 
+ * Thread Safety: This class is not thread-safe as it relies on the underlying 
+ * repository and registration services to handle concurrency.
  */
 @RestController
 public class MemberResourceRESTService {
@@ -84,87 +80,81 @@ public class MemberResourceRESTService {
      * 
      * @param log Logger instance for logging
      * @param repository MemberRepository instance for data access
-     * @param registration MemberRegistration instance for handling member registration
+     * @param registration MemberRegistration instance for registration logic
      */
     @Autowired
     public MemberResourceRESTService(Logger log, MemberRepository repository, MemberRegistration registration) {
-        this.log = log; // Assign the logger instance
-        this.repository = repository; // Assign the member repository
-        this.registration = registration; // Assign the member registration service
+        this.log = log; // Assigning the logger instance
+        this.repository = repository; // Assigning the repository instance
+        this.registration = registration; // Assigning the registration service instance
     }
 
     /**
-     * Retrieves a list of all members.
+     * Lists all members in the system.
      * 
-     * @return List of Member objects representing all members in the repository
+     * @return List of all members
      */
     @GetMapping({"/api/members"})
     @ResponseBody
     public List<Member> listAllMembers() {
-        // Fetch all members from the repository
-        return repository.findAll(); // Return the list of members
+        // Fetching all members from the repository
+        return repository.findAll(); // Returns the list of members
     }
 
     /**
-     * Looks up a member by their unique identifier.
+     * Looks up a member by their ID.
      * 
-     * @param id The unique identifier of the member to look up
-     * @return Member object representing the found member
+     * @param id The ID of the member to look up
+     * @return The member with the specified ID
      * @throws ResponseStatusException if the member is not found
      */
     @GetMapping("/api/members/{id:[0-9]+}")
     @ResponseBody
     public Member lookupMemberById(@PathVariable("id") long id) {
-        // Attempt to find the member by ID
+        // Fetching the member by ID from the repository
         Member member = repository.findById(BigInteger.valueOf(id));
         
-        // Check if the member was found
+        // Checking if the member was found
         if (member == null) {
-            // Create a new exception indicating the member was not found
+            // Throwing an exception if the member is not found
             ResponseStatusException e = new ResponseStatusException(HttpStatus.NOT_FOUND, "Member not found");
-            // Log the exception for debugging purposes
-            log.throwing(MemberResourceRESTService.class.getName(), "deleteMemberById", e);
-            // Throw the exception to indicate the error
-            throw e;
+            log.throwing(MemberResourceRESTService.class.getName(), "lookupMemberById", e); // Logging the exception
+            throw e; // Propagating the exception
         }
         
-        // Return the found member
-        return member;
+        // Returning the found member
+        return member; // Returns the member object
     }
 
     /**
-     * Deletes a member by their unique identifier.
+     * Deletes a member by their ID.
      * 
-     * @param id The unique identifier of the member to delete
+     * @param id The ID of the member to delete
      * @throws ResponseStatusException if the member is not found
      */
     @DeleteMapping("/api/members/{id:[0-9]+}")
     public void deleteMemberById(@PathVariable("id") long id) {
-        // Attempt to find the member by ID
+        // Fetching the member by ID from the repository
         Member member = repository.findById(BigInteger.valueOf(id));
         
-        // Check if the member was found
+        // Checking if the member was found
         if (member == null) {
-            // Create a new exception indicating the member was not found
+            // Throwing an exception if the member is not found
             ResponseStatusException e = new ResponseStatusException(HttpStatus.NOT_FOUND, "Member not found");
-            // Log the exception for debugging purposes
-            log.throwing(MemberResourceRESTService.class.getName(), "deleteMemberById", e);
-            // Throw the exception to indicate the error
-            throw e;
+            log.throwing(MemberResourceRESTService.class.getName(), "deleteMemberById", e); // Logging the exception
+            throw e; // Propagating the exception
         }
         
-        // Delete the member from the repository
-        repository.deleteMemberById(BigInteger.valueOf(id)); // Perform the deletion
+        // Deleting the member from the repository
+        repository.deleteMemberById(BigInteger.valueOf(id)); // Deletes the member by ID
     }
 
     /**
      * Creates a new member from the provided values.
-     * <p>
-     * Performs validation and returns a response indicating the result of the operation.
-     * </p>
+     * Performs validation and returns a response indicating success or failure.
      * 
-     * @param member The Member object containing the details of the new member
-     * @return The created Member object
+     * @param member The member object to create
+     * @return The created member object
      * @throws ResponseStatusException if validation fails or an internal error occurs
      */
     @PostMapping("/api/members")
@@ -172,65 +162,65 @@ public class MemberResourceRESTService {
     @ResponseBody
     public Member createMember(@RequestBody Member member) {
         try {
-            // Validate the member details
-            validateMember(member);
-            // Register the new member
-            registration.register(member);
+            // Validating the member object
+            validateMember(member); // Calls the validation method
+            
+            // Registering the member
+            registration.register(member); // Registers the member
+            
         } catch (ValidationException e) {
-            // Handle validation exceptions specifically
+            // Handling validation exceptions
             ResponseStatusException error = new ResponseStatusException(HttpStatus.CONFLICT, "Email is already in use by another member");
-            // Log the exception for debugging purposes
-            log.throwing(this.getClass().getName(), "createMember", error);
-            // Throw the exception to indicate the error
-            throw error;
+            log.throwing(this.getClass().getName(), "createMember", error); // Logging the exception
+            throw error; // Propagating the exception
         } catch (Exception e) {
-            // Handle any other exceptions that may occur
+            // Handling general exceptions
             ResponseStatusException error = new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, e.getMessage());
-            // Log the exception for debugging purposes
-            log.throwing(this.getClass().getName(), "createMember", error);
-            // Throw the exception to indicate the error
-            throw error;
+            log.throwing(this.getClass().getName(), "createMember", error); // Logging the exception
+            throw error; // Propagating the exception
         }
-        // Return the created member
-        return member;
+        
+        // Returning the created member
+        return member; // Returns the created member object
     }
 
     /**
-     * Validates the given Member object to ensure it meets the required criteria.
+     * Validates the given Member object.
+     * Throws a ValidationException if a member with the same email already exists.
      * 
-     * @param member The Member object to be validated
-     * @throws ValidationException If a member with the same email already exists
+     * @param member The member to validate
+     * @throws ValidationException if a member with the same email already exists
      */
     private void validateMember(Member member) throws ValidationException {
-        // Retrieve the email from the member object
+        // Retrieving the email from the member object
         String email = member.getEmail();
         
-        // Check if the email already exists in the repository
+        // Checking if the email already exists
         if (emailAlreadyExists(email)) {
-            // Create a new validation exception indicating the email is already in use
+            // Throwing a validation exception if the email is already in use
             ValidationException e = new ValidationException("Member already exists using email: " + email);
-            // Log the exception for debugging purposes
-            log.throwing(this.getClass().getName(), "validateMember", e);
-            // Throw the exception to indicate the validation error
-            throw e;
+            log.throwing(this.getClass().getName(), "validateMember", e); // Logging the exception
+            throw e; // Propagating the exception
         }
     }
 
     /**
      * Checks if a member with the same email address is already registered.
      * 
-     * @param email The email address to check for existence
+     * @param email The email to check
      * @return True if the email already exists, false otherwise
      */
     public boolean emailAlreadyExists(String email) {
-        Member member = null; // Initialize member variable to hold the found member
+        Member member = null; // Initializing member variable
+        
         try {
-            // Attempt to find a member by email
-            member = repository.findByEmail(email);
+            // Attempting to find a member by email
+            member = repository.findByEmail(email); // Fetches the member by email
         } catch (Exception e) {
-            // Ignore any exceptions that occur during the lookup
+            // Ignoring exceptions during the lookup
         }
-        // Return true if a member was found, false otherwise
-        return member != null; // Check if the member is not null
+        
+        // Returning true if a member was found, false otherwise
+        return member != null; // Returns whether the member exists
     }
 }

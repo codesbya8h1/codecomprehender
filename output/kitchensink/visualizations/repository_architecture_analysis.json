@@ -1,42 +1,42 @@
 {
   "metadata": {
-    "generated_at": "2025-06-19T14:57:37.709054",
+    "generated_at": "2025-06-19T15:53:32.655690",
     "repository_name": "kitchensink",
     "total_files_analyzed": 13,
-    "total_relationships": 30,
+    "total_relationships": 31,
     "analysis_type": "repository_architecture",
     "visualization_file": "repository_architecture.html"
   },
   "hierarchy": {
     "description": "Hierarchical organization of files by architectural role",
     "levels": {
-      "2": [
-        {
-          "name": "MemberListProducer",
-          "type": "service",
-          "purpose": "Produces a list of members and observes changes to update the list."
-        },
-        {
-          "name": "MemberRegistration",
-          "type": "service",
-          "purpose": "Handles the registration of members in the system."
-        }
-      ],
       "3": [
         {
           "name": "DatabaseSequence",
-          "type": "model",
+          "type": "data",
           "purpose": "Represents a database sequence entity for MongoDB."
         },
         {
           "name": "MemberRepository",
           "type": "data",
-          "purpose": "Repository interface for accessing Member data from MongoDB."
+          "purpose": "Repository interface for accessing Member data in a MongoDB database."
         },
         {
           "name": "Member",
           "type": "model",
-          "purpose": "Represents a member entity with validation constraints for email, name, and phone number."
+          "purpose": "Represents a member entity with validation constraints."
+        }
+      ],
+      "2": [
+        {
+          "name": "MemberListProducer",
+          "type": "service",
+          "purpose": "Produces a list of members and observes changes to the member list."
+        },
+        {
+          "name": "MemberRegistration",
+          "type": "service",
+          "purpose": "Handles the registration of members and interacts with the database."
         }
       ],
       "1": [
@@ -67,7 +67,7 @@
         {
           "name": "Resources",
           "type": "config",
-          "purpose": "Provides configuration for creating Logger beans in a Spring application."
+          "purpose": "Provides configuration for producing Logger instances."
         },
         {
           "name": "MongoDBConfig",
@@ -84,7 +84,7 @@
         {
           "name": "RemoteMemberRegistrationIT",
           "type": "exit_point",
-          "purpose": "Integration test for remote member registration API"
+          "purpose": "Integration test for remote member registration API."
         }
       ]
     },
@@ -98,40 +98,11 @@
     }
   },
   "files": {
-    "MemberListProducer": {
-      "file_info": {
-        "name": "MemberListProducer.java",
-        "main_class": "MemberListProducer",
-        "file_type": "service",
-        "purpose": "Produces a list of members and observes changes to update the list.",
-        "is_entry_point": false,
-        "is_exit_point": false
-      },
-      "dependencies": [
-        {
-          "target_file": "MemberRepository.java",
-          "target_class": "MemberRepository",
-          "relationship_type": "instantiation",
-          "description": "Instantiates MemberRepository to retrieve member data."
-        },
-        {
-          "target_file": "Member.java",
-          "target_class": "Member",
-          "relationship_type": "import",
-          "description": "Imports the Member class used for member data representation."
-        }
-      ],
-      "provides_to": [],
-      "hierarchy_level": 2,
-      "architectural_role": "service",
-      "is_entry_point": false,
-      "is_exit_point": false
-    },
     "DatabaseSequence": {
       "file_info": {
         "name": "DatabaseSequence.java",
         "main_class": "DatabaseSequence",
-        "file_type": "model",
+        "file_type": "data",
         "purpose": "Represents a database sequence entity for MongoDB.",
         "is_entry_point": false,
         "is_exit_point": false
@@ -147,7 +118,7 @@
           "target_file": "Document.java",
           "target_class": "Document",
           "relationship_type": "import",
-          "description": "Annotation for defining the MongoDB document."
+          "description": "Annotation for mapping the class to a MongoDB document."
         },
         {
           "target_file": "BigInteger.java",
@@ -158,48 +129,36 @@
       ],
       "provides_to": [],
       "hierarchy_level": 3,
-      "architectural_role": "model",
+      "architectural_role": "data",
       "is_entry_point": false,
       "is_exit_point": false
     },
-    "MemberRepository": {
+    "MemberListProducer": {
       "file_info": {
-        "name": "MemberRepository.java",
-        "main_class": "MemberRepository",
-        "file_type": "data",
-        "purpose": "Repository interface for accessing Member data from MongoDB.",
+        "name": "MemberListProducer.java",
+        "main_class": "MemberListProducer",
+        "file_type": "service",
+        "purpose": "Produces a list of members and observes changes to the member list.",
         "is_entry_point": false,
         "is_exit_point": false
       },
       "dependencies": [
         {
+          "target_file": "MemberRepository.java",
+          "target_class": "MemberRepository",
+          "relationship_type": "instantiation",
+          "description": "Instantiates MemberRepository to retrieve member data."
+        },
+        {
           "target_file": "Member.java",
           "target_class": "Member",
           "relationship_type": "import",
-          "description": "Imports the Member model class used for data representation."
-        },
-        {
-          "target_file": "MongoRepository.java",
-          "target_class": "MongoRepository",
-          "relationship_type": "extends",
-          "description": "Extends MongoRepository to provide CRUD operations for Member."
-        },
-        {
-          "target_file": "Repository.java",
-          "target_class": "Repository",
-          "relationship_type": "import",
-          "description": "Imports the Repository annotation to indicate this interface is a repository."
+          "description": "Imports Member class to represent member data."
         }
       ],
-      "provides_to": [
-        {
-          "interface_name": "MemberRepository",
-          "service_type": "data_access",
-          "description": "Provides data access methods for Member entities."
-        }
-      ],
-      "hierarchy_level": 3,
-      "architectural_role": "data",
+      "provides_to": [],
+      "hierarchy_level": 2,
+      "architectural_role": "service",
       "is_entry_point": false,
       "is_exit_point": false
     },
@@ -229,18 +188,106 @@
           "target_file": "MemberRegistration.java",
           "target_class": "MemberRegistration",
           "relationship_type": "instantiation",
-          "description": "Handles the registration logic for new members."
+          "description": "Handles the registration process for new members."
         }
       ],
       "provides_to": [
         {
           "interface_name": "MemberController",
           "service_type": "service",
-          "description": "Provides member registration and retrieval functionalities."
+          "description": "Provides member registration and management functionalities."
         }
       ],
       "hierarchy_level": 1,
       "architectural_role": "controller",
+      "is_entry_point": false,
+      "is_exit_point": false
+    },
+    "MemberRepository": {
+      "file_info": {
+        "name": "MemberRepository.java",
+        "main_class": "MemberRepository",
+        "file_type": "data",
+        "purpose": "Repository interface for accessing Member data in a MongoDB database.",
+        "is_entry_point": false,
+        "is_exit_point": true
+      },
+      "dependencies": [
+        {
+          "target_file": "Member.java",
+          "target_class": "Member",
+          "relationship_type": "import",
+          "description": "Imports the Member model used for data operations."
+        },
+        {
+          "target_file": "MongoRepository.java",
+          "target_class": "MongoRepository",
+          "relationship_type": "extends",
+          "description": "Extends MongoRepository to provide CRUD operations for Member."
+        },
+        {
+          "target_file": "Repository.java",
+          "target_class": "Repository",
+          "relationship_type": "import",
+          "description": "Imports the Repository annotation to indicate this is a Spring Data repository."
+        }
+      ],
+      "provides_to": [
+        {
+          "interface_name": "MemberRepository",
+          "service_type": "data_access",
+          "description": "Provides data access methods for Member entities."
+        }
+      ],
+      "hierarchy_level": 3,
+      "architectural_role": "data",
+      "is_entry_point": false,
+      "is_exit_point": true
+    },
+    "MemberRegistration": {
+      "file_info": {
+        "name": "MemberRegistration.java",
+        "main_class": "MemberRegistration",
+        "file_type": "service",
+        "purpose": "Handles the registration of members and interacts with the database.",
+        "is_entry_point": false,
+        "is_exit_point": false
+      },
+      "dependencies": [
+        {
+          "target_file": "MemberRepository.java",
+          "target_class": "MemberRepository",
+          "relationship_type": "instantiation",
+          "description": "Uses MemberRepository to insert member data into the database."
+        },
+        {
+          "target_file": "DatabaseSequence.java",
+          "target_class": "DatabaseSequence",
+          "relationship_type": "instantiation",
+          "description": "Uses DatabaseSequence to generate unique sequence numbers for members."
+        },
+        {
+          "target_file": "MongoClient.java",
+          "target_class": "MongoClient",
+          "relationship_type": "instantiation",
+          "description": "MongoClient is injected for MongoDB operations."
+        },
+        {
+          "target_file": "MongoOperations.java",
+          "target_class": "MongoOperations",
+          "relationship_type": "instantiation",
+          "description": "Uses MongoOperations for MongoDB database interactions."
+        },
+        {
+          "target_file": "Logger.java",
+          "target_class": "Logger",
+          "relationship_type": "instantiation",
+          "description": "Uses Logger for logging purposes."
+        }
+      ],
+      "provides_to": [],
+      "hierarchy_level": 2,
+      "architectural_role": "service",
       "is_entry_point": false,
       "is_exit_point": false
     },
@@ -282,13 +329,66 @@
           "target_file": "Logger.java",
           "target_class": "Logger",
           "relationship_type": "import",
-          "description": "Logger class for logging information"
+          "description": "Logging utility used in the test"
         }
       ],
       "provides_to": [],
       "hierarchy_level": 0,
       "architectural_role": "entry_point",
       "is_entry_point": true,
+      "is_exit_point": false
+    },
+    "Resources": {
+      "file_info": {
+        "name": "Resources.java",
+        "main_class": "Resources",
+        "file_type": "config",
+        "purpose": "Provides configuration for producing Logger instances.",
+        "is_entry_point": false,
+        "is_exit_point": false
+      },
+      "dependencies": [
+        {
+          "target_file": "InjectionPoint.java",
+          "target_class": "InjectionPoint",
+          "relationship_type": "import",
+          "description": "Used for obtaining the class context for the logger."
+        },
+        {
+          "target_file": "Bean.java",
+          "target_class": "Bean",
+          "relationship_type": "import",
+          "description": "Annotation used to define a bean in the Spring context."
+        },
+        {
+          "target_file": "Configuration.java",
+          "target_class": "Configuration",
+          "relationship_type": "import",
+          "description": "Annotation indicating that this class provides Spring configuration."
+        },
+        {
+          "target_file": "Scope.java",
+          "target_class": "Scope",
+          "relationship_type": "import",
+          "description": "Annotation used to define the scope of the bean."
+        },
+        {
+          "target_file": "Logger.java",
+          "target_class": "Logger",
+          "relationship_type": "import",
+          "description": "Used to create logger instances."
+        }
+      ],
+      "provides_to": [
+        {
+          "interface_name": "Logger",
+          "service_type": "utility",
+          "description": "Provides Logger instances for dependency injection."
+        }
+      ],
+      "hierarchy_level": 4,
+      "architectural_role": "config",
+      "is_entry_point": false,
       "is_exit_point": false
     },
     "MemberResourceRESTService": {
@@ -323,7 +423,7 @@
           "target_file": "Logger.java",
           "target_class": "Logger",
           "relationship_type": "instantiation",
-          "description": "Used for logging information and errors."
+          "description": "Used for logging activities."
         },
         {
           "target_file": "ResponseStatusException.java",
@@ -391,59 +491,6 @@
       "is_entry_point": true,
       "is_exit_point": false
     },
-    "Resources": {
-      "file_info": {
-        "name": "Resources.java",
-        "main_class": "Resources",
-        "file_type": "config",
-        "purpose": "Provides configuration for creating Logger beans in a Spring application.",
-        "is_entry_point": false,
-        "is_exit_point": false
-      },
-      "dependencies": [
-        {
-          "target_file": "InjectionPoint.java",
-          "target_class": "InjectionPoint",
-          "relationship_type": "import",
-          "description": "Used for obtaining the class context for the logger."
-        },
-        {
-          "target_file": "Bean.java",
-          "target_class": "Bean",
-          "relationship_type": "import",
-          "description": "Annotation used to define a bean in the Spring context."
-        },
-        {
-          "target_file": "Configuration.java",
-          "target_class": "Configuration",
-          "relationship_type": "import",
-          "description": "Annotation indicating that this class provides Spring configuration."
-        },
-        {
-          "target_file": "Scope.java",
-          "target_class": "Scope",
-          "relationship_type": "import",
-          "description": "Annotation used to define the scope of the bean."
-        },
-        {
-          "target_file": "Logger.java",
-          "target_class": "Logger",
-          "relationship_type": "import",
-          "description": "Used to create logger instances."
-        }
-      ],
-      "provides_to": [
-        {
-          "interface_name": "Logger",
-          "service_type": "utility",
-          "description": "Provides Logger instances for dependency injection."
-        }
-      ],
-      "hierarchy_level": 4,
-      "architectural_role": "config",
-      "is_entry_point": false,
-      "is_exit_point": false
-    },
     "MongoDBConfig": {
       "file_info": {
         "name": "MongoDBConfig.java",
@@ -473,6 +520,71 @@
       "is_entry_point": false,
       "is_exit_point": true
     },
+    "RemoteMemberRegistrationIT": {
+      "file_info": {
+        "name": "RemoteMemberRegistrationIT.java",
+        "main_class": "RemoteMemberRegistrationIT",
+        "file_type": "exit_point",
+        "purpose": "Integration test for remote member registration API.",
+        "is_entry_point": false,
+        "is_exit_point": true
+      },
+      "dependencies": [
+        {
+          "target_file": "Member.java",
+          "target_class": "Member",
+          "relationship_type": "import",
+          "description": "Represents a member entity used in the test."
+        },
+        {
+          "target_file": "Json.java",
+          "target_class": "Json",
+          "relationship_type": "import",
+          "description": "Used for creating JSON objects for API requests."
+        },
+        {
+          "target_file": "JSONObject.java",
+          "target_class": "JSONObject",
+          "relationship_type": "import",
+          "description": "Used for parsing JSON responses from the API."
+        },
+        {
+          "target_file": "Assert.java",
+          "target_class": "Assert",
+          "relationship_type": "import",
+          "description": "Used for assertions in the test."
+        },
+        {
+          "target_file": "HttpClient.java",
+          "target_class": "HttpClient",
+          "relationship_type": "import",
+          "description": "Used for sending HTTP requests to the API."
+        },
+        {
+          "target_file": "HttpRequest.java",
+          "target_class": "HttpRequest",
+          "relationship_type": "import",
+          "description": "Used for building HTTP requests."
+        },
+        {
+          "target_file": "HttpResponse.java",
+          "target_class": "HttpResponse",
+          "relationship_type": "import",
+          "description": "Used for handling HTTP responses."
+        },
+        {
+          "target_file": "Logger.java",
+          "target_class": "Logger",
+          "relationship_type": "import",
+          "description": "Used for logging information during the test."
+        }
+      ],
+      "provides_to": [],
+      "hierarchy_level": 5,
+      "architectural_role": "exit_point",
+      "is_entry_point": false,
+      "is_exit_point": true
+    },
     "ApplicationConfiguration": {
       "file_info": {
         "name": "ApplicationConfiguration.java",
@@ -499,7 +611,7 @@
           "target_file": "MongoOperations.java",
           "target_class": "MongoOperations",
           "relationship_type": "import",
-          "description": "Spring Data interface for MongoDB operations."
+          "description": "Interface for MongoDB operations."
         },
         {
           "target_file": "ValidatingMongoEventListener.java",
@@ -522,7 +634,7 @@
         {
           "target_file": "ApplicationListener.java",
           "target_class": "ApplicationListener",
-          "relationship_type": "extends",
+          "relationship_type": "import",
           "description": "Interface for listening to application events."
         }
       ],
@@ -543,166 +655,12 @@
       "is_entry_point": false,
       "is_exit_point": false
     },
-    "RemoteMemberRegistrationIT": {
-      "file_info": {
-        "name": "RemoteMemberRegistrationIT.java",
-        "main_class": "RemoteMemberRegistrationIT",
-        "file_type": "exit_point",
-        "purpose": "Integration test for remote member registration API",
-        "is_entry_point": false,
-        "is_exit_point": true
-      },
-      "dependencies": [
-        {
-          "target_file": "Member.java",
-          "target_class": "Member",
-          "relationship_type": "import",
-          "description": "Represents a member entity used in the test"
-        },
-        {
-          "target_file": "Json.java",
-          "target_class": "Json",
-          "relationship_type": "import",
-          "description": "Utility for creating JSON objects"
-        },
-        {
-          "target_file": "JsonObject.java",
-          "target_class": "JsonObject",
-          "relationship_type": "import",
-          "description": "Represents a JSON object used in the test"
-        },
-        {
-          "target_file": "JSONObject.java",
-          "target_class": "JSONObject",
-          "relationship_type": "import",
-          "description": "Utility for handling JSON objects from org.json"
-        },
-        {
-          "target_file": "HttpClient.java",
-          "target_class": "HttpClient",
-          "relationship_type": "import",
-          "description": "HTTP client for sending requests"
-        },
-        {
-          "target_file": "HttpRequest.java",
-          "target_class": "HttpRequest",
-          "relationship_type": "import",
-          "description": "Represents an HTTP request"
-        },
-        {
-          "target_file": "HttpResponse.java",
-          "target_class": "HttpResponse",
-          "relationship_type": "import",
-          "description": "Represents an HTTP response"
-        },
-        {
-          "target_file": "Assert.java",
-          "target_class": "Assert",
-          "relationship_type": "import",
-          "description": "JUnit assertion utility for testing"
-        },
-        {
-          "target_file": "AfterEach.java",
-          "target_class": "AfterEach",
-          "relationship_type": "import",
-          "description": "JUnit annotation for cleanup after each test"
-        },
-        {
-          "target_file": "Test.java",
-          "target_class": "Test",
-          "relationship_type": "import",
-          "description": "JUnit annotation for marking test methods"
-        }
-      ],
-      "provides_to": [],
-      "hierarchy_level": 5,
-      "architectural_role": "exit_point",
-      "is_entry_point": false,
-      "is_exit_point": true
-    },
-    "MemberRegistration": {
-      "file_info": {
-        "name": "MemberRegistration.java",
-        "main_class": "MemberRegistration",
-        "file_type": "service",
-        "purpose": "Handles the registration of members in the system.",
-        "is_entry_point": false,
-        "is_exit_point": false
-      },
-      "dependencies": [
-        {
-          "target_file": "MemberRepository.java",
-          "target_class": "MemberRepository",
-          "relationship_type": "instantiation",
-          "description": "Used to perform database operations related to members."
-        },
-        {
-          "target_file": "DatabaseSequence.java",
-          "target_class": "DatabaseSequence",
-          "relationship_type": "instantiation",
-          "description": "Represents the database sequence for generating unique member IDs."
-        },
-        {
-          "target_file": "Member.java",
-          "target_class": "Member",
-          "relationship_type": "instantiation",
-          "description": "Represents the member entity being registered."
-        },
-        {
-          "target_file": "MongoOperations.java",
-          "target_class": "MongoOperations",
-          "relationship_type": "instantiation",
-          "description": "Used for MongoDB operations."
-        },
-        {
-          "target_file": "MongoWriteException.java",
-          "target_class": "MongoWriteException",
-          "relationship_type": "import",
-          "description": "Exception thrown for MongoDB write errors."
-        },
-        {
-          "target_file": "FindAndModifyOptions.java",
-          "target_class": "FindAndModifyOptions",
-          "relationship_type": "import",
-          "description": "Options for find and modify operations in MongoDB."
-        },
-        {
-          "target_file": "Criteria.java",
-          "target_class": "Criteria",
-          "relationship_type": "import",
-          "description": "Criteria for querying MongoDB."
-        },
-        {
-          "target_file": "Query.java",
-          "target_class": "Query",
-          "relationship_type": "import",
-          "description": "Represents a MongoDB query."
-        },
-        {
-          "target_file": "Update.java",
-          "target_class": "Update",
-          "relationship_type": "import",
-          "description": "Represents an update operation in MongoDB."
-        },
-        {
-          "target_file": "Logger.java",
-          "target_class": "Logger",
-          "relationship_type": "import",
-          "description": "Used for logging information."
-        }
-      ],
-      "provides_to": [],
-      "hierarchy_level": 2,
-      "architectural_role": "service",
-      "is_entry_point": false,
-      "is_exit_point": false
-    },
     "Member": {
       "file_info": {
         "name": "Member.java",
         "main_class": "Member",
         "file_type": "model",
-        "purpose": "Represents a member entity with validation constraints for email, name, and phone number.",
+        "purpose": "Represents a member entity with validation constraints.",
         "is_entry_point": false,
         "is_exit_point": false
       },
@@ -747,7 +705,7 @@
           "target_file": "org.springframework.data.annotation.Id",
           "target_class": "Id",
           "relationship_type": "import",
-          "description": "Annotation to indicate the primary key of the entity."
+          "description": "Annotation to denote the primary key of the entity."
         },
         {
           "target_file": "org.springframework.data.annotation.Transient",
@@ -759,13 +717,25 @@
           "target_file": "org.springframework.data.mongodb.core.index.Indexed",
           "target_class": "Indexed",
           "relationship_type": "import",
-          "description": "Annotation to indicate that a field should be indexed."
+          "description": "Annotation to create an index on the field."
         },
         {
           "target_file": "org.springframework.data.mongodb.core.mapping.Document",
           "target_class": "Document",
           "relationship_type": "import",
-          "description": "Annotation to indicate that this class is a MongoDB document."
+          "description": "Annotation to define a MongoDB document."
+        },
+        {
+          "target_file": "java.io.Serializable",
+          "target_class": "Serializable",
+          "relationship_type": "import",
+          "description": "Interface indicating that the class can be serialized."
+        },
+        {
+          "target_file": "java.math.BigInteger",
+          "target_class": "BigInteger",
+          "relationship_type": "import",
+          "description": "Class used for representing large integers."
         }
       ],
       "provides_to": [],
@@ -788,16 +758,8 @@
       "from": "MemberListProducer",
       "to": "Member",
       "type": "import",
-      "description": "Imports the Member class used for member data representation.",
+      "description": "Imports Member class to represent member data.",
       "from_level": 2,
-      "to_level": 3
-    },
-    {
-      "from": "MemberRepository",
-      "to": "Member",
-      "type": "import",
-      "description": "Imports the Member model class used for data representation.",
-      "from_level": 3,
       "to_level": 3
     },
     {
@@ -820,8 +782,48 @@
       "from": "MemberController",
       "to": "MemberRegistration",
       "type": "instantiation",
-      "description": "Handles the registration logic for new members.",
+      "description": "Handles the registration process for new members.",
       "from_level": 1,
+      "to_level": 2
+    },
+    {
+      "from": "MemberRepository",
+      "to": "Member",
+      "type": "import",
+      "description": "Imports the Member model used for data operations.",
+      "from_level": 3,
+      "to_level": 3
+    },
+    {
+      "from": "MemberRegistration",
+      "to": "MemberRepository",
+      "type": "instantiation",
+      "description": "Uses MemberRepository to insert member data into the database.",
+      "from_level": 2,
+      "to_level": 3
+    },
+    {
+      "from": "MemberRegistration",
+      "to": "DatabaseSequence",
+      "type": "instantiation",
+      "description": "Uses DatabaseSequence to generate unique sequence numbers for members.",
+      "from_level": 2,
+      "to_level": 3
+    },
+    {
+      "from": "MemberRegistration",
+      "to": "MongoClient",
+      "type": "instantiation",
+      "description": "MongoClient is injected for MongoDB operations.",
+      "from_level": 2,
+      "to_level": 2
+    },
+    {
+      "from": "MemberRegistration",
+      "to": "Logger",
+      "type": "instantiation",
+      "description": "Uses Logger for logging purposes.",
+      "from_level": 2,
       "to_level": 2
     },
     {
@@ -860,8 +862,24 @@
       "from": "MemberRegistrationIT",
       "to": "Logger",
       "type": "import",
-      "description": "Logger class for logging information",
+      "description": "Logging utility used in the test",
       "from_level": 0,
+      "to_level": 2
+    },
+    {
+      "from": "Resources",
+      "to": "Configuration",
+      "type": "import",
+      "description": "Annotation indicating that this class provides Spring configuration.",
+      "from_level": 4,
+      "to_level": 2
+    },
+    {
+      "from": "Resources",
+      "to": "Logger",
+      "type": "import",
+      "description": "Used to create logger instances.",
+      "from_level": 4,
       "to_level": 2
     },
     {
@@ -892,7 +910,7 @@
       "from": "MemberResourceRESTService",
       "to": "Logger",
       "type": "instantiation",
-      "description": "Used for logging information and errors.",
+      "description": "Used for logging activities.",
       "from_level": 1,
       "to_level": 2
     },
@@ -929,27 +947,35 @@
       "to_level": 2
     },
     {
-      "from": "Resources",
-      "to": "Configuration",
-      "type": "import",
-      "description": "Annotation indicating that this class provides Spring configuration.",
-      "from_level": 4,
-      "to_level": 2
-    },
-    {
-      "from": "Resources",
-      "to": "Logger",
-      "type": "import",
-      "description": "Used to create logger instances.",
-      "from_level": 4,
-      "to_level": 2
-    },
-    {
       "from": "MongoDBConfig",
       "to": "Configuration",
       "type": "import",
       "description": "Imports Configuration annotation from Spring framework.",
       "from_level": 4,
+      "to_level": 2
+    },
+    {
+      "from": "RemoteMemberRegistrationIT",
+      "to": "Member",
+      "type": "import",
+      "description": "Represents a member entity used in the test.",
+      "from_level": 5,
+      "to_level": 3
+    },
+    {
+      "from": "RemoteMemberRegistrationIT",
+      "to": "HttpClient",
+      "type": "import",
+      "description": "Used for sending HTTP requests to the API.",
+      "from_level": 5,
+      "to_level": 2
+    },
+    {
+      "from": "RemoteMemberRegistrationIT",
+      "to": "Logger",
+      "type": "import",
+      "description": "Used for logging information during the test.",
+      "from_level": 5,
       "to_level": 2
     },
     {
@@ -967,67 +993,19 @@
       "description": "Represents a member model used for MongoDB collection.",
       "from_level": 4,
       "to_level": 3
-    },
-    {
-      "from": "RemoteMemberRegistrationIT",
-      "to": "Member",
-      "type": "import",
-      "description": "Represents a member entity used in the test",
-      "from_level": 5,
-      "to_level": 3
-    },
-    {
-      "from": "RemoteMemberRegistrationIT",
-      "to": "HttpClient",
-      "type": "import",
-      "description": "HTTP client for sending requests",
-      "from_level": 5,
-      "to_level": 2
-    },
-    {
-      "from": "MemberRegistration",
-      "to": "MemberRepository",
-      "type": "instantiation",
-      "description": "Used to perform database operations related to members.",
-      "from_level": 2,
-      "to_level": 3
-    },
-    {
-      "from": "MemberRegistration",
-      "to": "DatabaseSequence",
-      "type": "instantiation",
-      "description": "Represents the database sequence for generating unique member IDs.",
-      "from_level": 2,
-      "to_level": 3
-    },
-    {
-      "from": "MemberRegistration",
-      "to": "Member",
-      "type": "instantiation",
-      "description": "Represents the member entity being registered.",
-      "from_level": 2,
-      "to_level": 3
-    },
-    {
-      "from": "MemberRegistration",
-      "to": "Logger",
-      "type": "import",
-      "description": "Used for logging information.",
-      "from_level": 2,
-      "to_level": 2
     }
   ],
   "architecture_summary": {
     "total_files": 13,
-    "total_relationships": 30,
+    "total_relationships": 31,
     "file_types": {
+      "data": 2,
       "service": 2,
-      "model": 2,
-      "data": 1,
       "controller": 2,
       "entry_point": 2,
       "config": 3,
-      "exit_point": 1
+      "exit_point": 1,
+      "model": 1
     },
     "entry_points": [
       "MemberRegistrationIT",
@@ -1035,6 +1013,7 @@
       "Main"
     ],
     "exit_points": [
+      "MemberRepository",
       "MongoDBConfig",
       "RemoteMemberRegistrationIT"
     ],
@@ -1073,7 +1052,6 @@
       "level": 3,
       "emoji": "📦",
       "files": [
-        "DatabaseSequence",
         "Member"
       ]
     },
@@ -1082,6 +1060,7 @@
       "level": 3,
       "emoji": "💾",
       "files": [
+        "DatabaseSequence",
         "MemberRepository"
       ]
     },
@@ -1112,27 +1091,27 @@
   },
   "statistics": {
     "relationships_by_type": {
-      "instantiation": 10,
+      "instantiation": 11,
       "import": 20
     },
     "files_by_level": {
-      "2": 2,
       "3": 3,
+      "2": 2,
       "1": 2,
       "0": 2,
       "4": 3,
       "5": 1
     },
     "connectivity_metrics": {
-      "total_connections": 30,
-      "average_connections_per_file": 2.3076923076923075,
+      "total_connections": 31,
+      "average_connections_per_file": 2.3846153846153846,
       "most_dependencies": {
         "file": "MemberRegistrationIT",
         "count": 5
       },
       "most_dependents": {
         "file": "Member",
-        "count": 8
+        "count": 7
       },
       "isolated_files": []
     }

@@ -12,37 +12,31 @@
       "target_file": "MemberRepository.java",
       "target_class": "MemberRepository",
       "relationship_type": "instantiation",
-      "description": "Used to perform database operations related to members."
+      "description": "Uses MemberRepository to insert member data into the database."
     },
     {
       "target_file": "DatabaseSequence.java",
       "target_class": "DatabaseSequence",
       "relationship_type": "instantiation",
-      "description": "Represents the database sequence for generating unique member IDs."
+      "description": "Uses DatabaseSequence to generate unique sequence numbers for members."
     },
     {
-      "target_file": "Member.java",
-      "target_class": "Member",
+      "target_file": "MongoClient.java",
+      "target_class": "MongoClient",
       "relationship_type": "instantiation",
-      "description": "Represents the member entity being registered."
+      "description": "MongoClient is injected for MongoDB operations."
     },
     {
       "target_file": "MongoOperations.java",
       "target_class": "MongoOperations",
       "relationship_type": "instantiation",
-      "description": "Used for MongoDB operations."
-    },
-    {
-      "target_file": "MongoWriteException.java",
-      "target_class": "MongoWriteException",
-      "relationship_type": "import",
-      "description": "Exception thrown for MongoDB write errors."
+      "description": "Uses MongoOperations for MongoDB database interactions."
     },
     {
       "target_file": "Logger.java",
       "target_class": "Logger",
       "relationship_type": "instantiation",
-      "description": "Used for logging information and errors."
+      "description": "Uses Logger for logging purposes."
     }
   ],
   "provides_to": []

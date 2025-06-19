@@ -12,19 +12,19 @@
       "target_file": "Id.java",
       "target_class": "Id",
       "relationship_type": "import",
-      "description": "Annotation used to mark the id field as the primary key."
+      "description": "Annotation for marking the id field."
     },
     {
       "target_file": "Document.java",
       "target_class": "Document",
       "relationship_type": "import",
-      "description": "Annotation used to specify the MongoDB collection for this entity."
+      "description": "Annotation for mapping the class to a MongoDB document."
     },
     {
       "target_file": "BigInteger.java",
       "target_class": "BigInteger",
       "relationship_type": "import",
-      "description": "Used as the type for the sequence field."
+      "description": "Used for the sequence field type."
     }
   ],
   "provides_to": []

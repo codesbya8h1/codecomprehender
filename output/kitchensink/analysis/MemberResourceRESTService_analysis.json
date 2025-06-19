@@ -12,7 +12,7 @@
       "target_file": "MemberRepository.java",
       "target_class": "MemberRepository",
       "relationship_type": "instantiation",
-      "description": "Used to interact with the members data."
+      "description": "Used to access member data."
     },
     {
       "target_file": "Member.java",
@@ -24,38 +24,20 @@
       "target_file": "MemberRegistration.java",
       "target_class": "MemberRegistration",
       "relationship_type": "instantiation",
-      "description": "Handles the registration logic for new members."
+      "description": "Handles member registration logic."
     },
     {
-      "target_file": "ValidationException.java",
-      "target_class": "ValidationException",
-      "relationship_type": "import",
-      "description": "Used for validation errors."
+      "target_file": "Logger.java",
+      "target_class": "Logger",
+      "relationship_type": "instantiation",
+      "description": "Used for logging activities."
     },
     {
       "target_file": "ResponseStatusException.java",
       "target_class": "ResponseStatusException",
       "relationship_type": "import",
       "description": "Used to handle response status exceptions."
-    },
-    {
-      "target_file": "HttpStatus.java",
-      "target_class": "HttpStatus",
-      "relationship_type": "import",
-      "description": "Used to define HTTP status codes."
-    },
-    {
-      "target_file": "Logger.java",
-      "target_class": "Logger",
-      "relationship_type": "import",
-      "description": "Used for logging purposes."
     }
   ],
-  "provides_to": [
-    {
-      "interface_name": "MemberResourceRESTService",
-      "service_type": "api",
-      "description": "Provides RESTful API endpoints for member operations."
-    }
-  ]
+  "provides_to": []
 }

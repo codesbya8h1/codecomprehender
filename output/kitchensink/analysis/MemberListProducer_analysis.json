@@ -18,7 +18,7 @@
       "target_file": "Member.java",
       "target_class": "Member",
       "relationship_type": "import",
-      "description": "Imports the Member class to represent member entities."
+      "description": "Imports Member class to represent member data."
     }
   ],
   "provides_to": []

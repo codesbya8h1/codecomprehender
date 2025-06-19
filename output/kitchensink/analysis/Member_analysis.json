@@ -3,7 +3,7 @@
     "name": "Member.java",
     "main_class": "Member",
     "file_type": "model",
-    "purpose": "Represents a member entity with validation constraints for email, name, and phone number.",
+    "purpose": "Represents a member entity with validation constraints.",
     "is_entry_point": false,
     "is_exit_point": false
   },
@@ -48,7 +48,7 @@
       "target_file": "org.springframework.data.annotation.Id",
       "target_class": "Id",
       "relationship_type": "import",
-      "description": "Annotation to indicate the primary key of the entity."
+      "description": "Annotation to denote the primary key of the entity."
     },
     {
       "target_file": "org.springframework.data.annotation.Transient",
@@ -60,13 +60,25 @@
       "target_file": "org.springframework.data.mongodb.core.index.Indexed",
       "target_class": "Indexed",
       "relationship_type": "import",
-      "description": "Annotation to indicate that a field should be indexed."
+      "description": "Annotation to create an index on the field."
     },
     {
       "target_file": "org.springframework.data.mongodb.core.mapping.Document",
       "target_class": "Document",
       "relationship_type": "import",
-      "description": "Annotation to indicate that this class is a MongoDB document."
+      "description": "Annotation to define a MongoDB document."
+    },
+    {
+      "target_file": "java.io.Serializable",
+      "target_class": "Serializable",
+      "relationship_type": "import",
+      "description": "Interface indicating that the class can be serialized."
+    },
+    {
+      "target_file": "java.math.BigInteger",
+      "target_class": "BigInteger",
+      "relationship_type": "import",
+      "description": "Class used for representing large integers."
     }
   ],
   "provides_to": []

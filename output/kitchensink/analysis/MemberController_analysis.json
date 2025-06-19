@@ -12,7 +12,7 @@
       "target_file": "MemberListProducer.java",
       "target_class": "MemberListProducer",
       "relationship_type": "instantiation",
-      "description": "Produces a list of members."
+      "description": "Used to retrieve and manage the list of members."
     },
     {
       "target_file": "Member.java",
@@ -24,8 +24,14 @@
       "target_file": "MemberRegistration.java",
       "target_class": "MemberRegistration",
       "relationship_type": "instantiation",
-      "description": "Handles the registration of new members."
+      "description": "Handles the registration process for new members."
     }
   ],
-  "provides_to": []
+  "provides_to": [
+    {
+      "interface_name": "MemberController",
+      "service_type": "service",
+      "description": "Provides member registration and management functionalities."
+    }
+  ]
 }

@@ -1,4 +1,4 @@
-/*
+/********************************************************************************
  * JBoss, Home of Professional Open Source
  * Copyright 2015, Red Hat, Inc. and/or its affiliates, and individual
  * contributors by the @authors tag. See the copyright.txt in the
@@ -13,12 +13,13 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- */
+ ********************************************************************************/
+
 package org.jboss.as.quickstarts.kitchensink.data;
 
 import jakarta.annotation.PostConstruct; // Importing PostConstruct for lifecycle management
 import jakarta.enterprise.event.Observes; // Importing Observes for event handling
-import jakarta.enterprise.event.Reception; // Importing Reception for event notification control
+import jakarta.enterprise.event.Reception; // Importing Reception for observer notification control
 import org.jboss.as.quickstarts.kitchensink.model.Member; // Importing Member model class
 import org.springframework.beans.factory.annotation.Autowired; // Importing Autowired for dependency injection
 import org.springframework.stereotype.Component; // Importing Component for Spring component scanning
@@ -26,10 +27,12 @@ import org.springframework.stereotype.Component; // Importing Component for Spri
 import java.util.List; // Importing List for member collection handling
 
 /**
- * The MemberListProducer class is responsible for producing and managing a list of Member entities.
- * It interacts with the MemberRepository to retrieve members and observes events to update the member list.
+ * The MemberListProducer class is responsible for producing a list of members
+ * from the MemberRepository. It observes changes to the member list and updates
+ * the internal list accordingly. This class is a Spring-managed component.
  * 
- * Design Patterns: This class follows the Singleton pattern as it is managed by the Spring container.
+ * Design Patterns: This class follows the Singleton pattern as it is managed
+ * by the Spring container, ensuring a single instance is used throughout the application.
  * 
  * Author: Red Hat, Inc.
  * Version: 1.0
@@ -44,10 +47,11 @@ import java.util.List; // Importing List for member collection handling
  * 
  * Typical Workflow:
  * 1. The application initializes the MemberListProducer.
- * 2. Upon initialization, it retrieves all members ordered by name.
- * 3. It listens for changes in the member list and updates accordingly.
+ * 2. The producer retrieves all members ordered by name.
+ * 3. Any changes to the member list trigger an update to the internal list.
  * 
- * Thread Safety: This class is not thread-safe as it relies on the Spring container for lifecycle management.
+ * Thread Safety: This class is not thread-safe. If accessed by multiple threads,
+ * external synchronization is required.
  */
 @Component
 public class MemberListProducer {
@@ -55,50 +59,56 @@ public class MemberListProducer {
     // MemberRepository instance for accessing member data
     private final MemberRepository memberRepository;
 
-    // List of members retrieved from the repository
+    // List to hold the members retrieved from the repository
     private List<Member> members;
 
     /**
      * Constructor for MemberListProducer.
      * 
-     * @param memberRepository The repository used to access member data.
-     *                         Must not be null.
+     * @param memberRepository The MemberRepository instance used to fetch member data.
+     *                        Must not be null.
+     * 
+     * This constructor is annotated with @Autowired, allowing Spring to inject
+     * the MemberRepository dependency automatically.
      */
     @Autowired
     public MemberListProducer(MemberRepository memberRepository) {
-        // Assigning the injected memberRepository to the class field
-        this.memberRepository = memberRepository;
+        this.memberRepository = memberRepository; // Assigning the injected repository to the field
     }
 
     /**
      * Retrieves the list of members.
      * 
-     * @return List<Member> A list of members. May return null if not initialized.
+     * @return List<Member> A list of members. This may be empty if no members exist.
      */
     public List<Member> getMembers() {
-        // Returning the current list of members
-        return members;
+        return members; // Returning the current list of members
     }
 
     /**
      * Observes changes to the member list and triggers a refresh of the member data.
      * 
-     * @param member The member that has changed. This parameter is used to trigger the update.
-     *               Can be null if no specific member is provided.
+     * @param member The member that has changed. This parameter is used to trigger
+     *               the update but is not directly used in this method.
+     * 
+     * This method is called whenever a member is added, updated, or removed.
+     * It invokes the retrieval of all members ordered by name.
      */
     public void onMemberListChanged(@Observes(notifyObserver = Reception.IF_EXISTS) final Member member) {
-        // Calling the method to retrieve all members ordered by name
+        // Calling the method to refresh the member list
         retrieveAllMembersOrderedByName();
     }
 
     /**
-     * Initializes the member list by retrieving all members from the repository,
-     * ordered by their names in ascending order.
-     * This method is called after the constructor during the bean initialization phase.
+     * Initializes the member list by retrieving all members from the repository
+     * and ordering them by name in ascending order.
+     * 
+     * This method is annotated with @PostConstruct, indicating that it should be
+     * called after the constructor has completed and dependency injection is done.
      */
     @PostConstruct
     public void retrieveAllMembersOrderedByName() {
-        // Fetching all members from the repository and ordering them by name in ascending order
+        // Fetching all members from the repository and ordering them by name
         members = memberRepository.findAllByOrderByNameAsc();
     }
 }

@@ -5,7 +5,7 @@
   "visualization_enabled": true,
   "processed_files": [
     {
-      "file_path": "/var/folders/rs/6z8_9p_51wq7xybv5wrnmjxr0000gn/T/codecomprehender_repo_892j9eru/src/main/java/org/jboss/as/quickstarts/kitchensink/Main.java",
+      "file_path": "/var/folders/rs/6z8_9p_51wq7xybv5wrnmjxr0000gn/T/codecomprehender_repo_bbi6kzvp/src/main/java/org/jboss/as/quickstarts/kitchensink/Main.java",
       "relative_path": "src/main/java/org/jboss/as/quickstarts/kitchensink/Main.java",
       "documentation_path": null,
       "visualization_path": null,
@@ -13,7 +13,7 @@
       "errors": []
     },
     {
-      "file_path": "/var/folders/rs/6z8_9p_51wq7xybv5wrnmjxr0000gn/T/codecomprehender_repo_892j9eru/src/main/java/org/jboss/as/quickstarts/kitchensink/config/ApplicationConfiguration.java",
+      "file_path": "/var/folders/rs/6z8_9p_51wq7xybv5wrnmjxr0000gn/T/codecomprehender_repo_bbi6kzvp/src/main/java/org/jboss/as/quickstarts/kitchensink/config/ApplicationConfiguration.java",
       "relative_path": "src/main/java/org/jboss/as/quickstarts/kitchensink/config/ApplicationConfiguration.java",
       "documentation_path": null,
       "visualization_path": null,
@@ -21,7 +21,7 @@
       "errors": []
     },
     {
-      "file_path": "/var/folders/rs/6z8_9p_51wq7xybv5wrnmjxr0000gn/T/codecomprehender_repo_892j9eru/src/main/java/org/jboss/as/quickstarts/kitchensink/utils/Resources.java",
+      "file_path": "/var/folders/rs/6z8_9p_51wq7xybv5wrnmjxr0000gn/T/codecomprehender_repo_bbi6kzvp/src/main/java/org/jboss/as/quickstarts/kitchensink/utils/Resources.java",
       "relative_path": "src/main/java/org/jboss/as/quickstarts/kitchensink/utils/Resources.java",
       "documentation_path": null,
       "visualization_path": null,
@@ -29,7 +29,7 @@
       "errors": []
     },
     {
-      "file_path": "/var/folders/rs/6z8_9p_51wq7xybv5wrnmjxr0000gn/T/codecomprehender_repo_892j9eru/src/main/java/org/jboss/as/quickstarts/kitchensink/controller/MemberController.java",
+      "file_path": "/var/folders/rs/6z8_9p_51wq7xybv5wrnmjxr0000gn/T/codecomprehender_repo_bbi6kzvp/src/main/java/org/jboss/as/quickstarts/kitchensink/controller/MemberController.java",
       "relative_path": "src/main/java/org/jboss/as/quickstarts/kitchensink/controller/MemberController.java",
       "documentation_path": null,
       "visualization_path": null,
@@ -37,7 +37,7 @@
       "errors": []
     },
     {
-      "file_path": "/var/folders/rs/6z8_9p_51wq7xybv5wrnmjxr0000gn/T/codecomprehender_repo_892j9eru/src/main/java/org/jboss/as/quickstarts/kitchensink/model/Member.java",
+      "file_path": "/var/folders/rs/6z8_9p_51wq7xybv5wrnmjxr0000gn/T/codecomprehender_repo_bbi6kzvp/src/main/java/org/jboss/as/quickstarts/kitchensink/model/Member.java",
       "relative_path": "src/main/java/org/jboss/as/quickstarts/kitchensink/model/Member.java",
       "documentation_path": null,
       "visualization_path": null,
@@ -45,7 +45,7 @@
       "errors": []
     },
     {
-      "file_path": "/var/folders/rs/6z8_9p_51wq7xybv5wrnmjxr0000gn/T/codecomprehender_repo_892j9eru/src/main/java/org/jboss/as/quickstarts/kitchensink/model/DatabaseSequence.java",
+      "file_path": "/var/folders/rs/6z8_9p_51wq7xybv5wrnmjxr0000gn/T/codecomprehender_repo_bbi6kzvp/src/main/java/org/jboss/as/quickstarts/kitchensink/model/DatabaseSequence.java",
       "relative_path": "src/main/java/org/jboss/as/quickstarts/kitchensink/model/DatabaseSequence.java",
       "documentation_path": null,
       "visualization_path": null,
@@ -53,7 +53,7 @@
       "errors": []
     },
     {
-      "file_path": "/var/folders/rs/6z8_9p_51wq7xybv5wrnmjxr0000gn/T/codecomprehender_repo_892j9eru/src/main/java/org/jboss/as/quickstarts/kitchensink/service/MemberRegistration.java",
+      "file_path": "/var/folders/rs/6z8_9p_51wq7xybv5wrnmjxr0000gn/T/codecomprehender_repo_bbi6kzvp/src/main/java/org/jboss/as/quickstarts/kitchensink/service/MemberRegistration.java",
       "relative_path": "src/main/java/org/jboss/as/quickstarts/kitchensink/service/MemberRegistration.java",
       "documentation_path": null,
       "visualization_path": null,
@@ -61,7 +61,7 @@
       "errors": []
     },
     {
-      "file_path": "/var/folders/rs/6z8_9p_51wq7xybv5wrnmjxr0000gn/T/codecomprehender_repo_892j9eru/src/main/java/org/jboss/as/quickstarts/kitchensink/data/MemberListProducer.java",
+      "file_path": "/var/folders/rs/6z8_9p_51wq7xybv5wrnmjxr0000gn/T/codecomprehender_repo_bbi6kzvp/src/main/java/org/jboss/as/quickstarts/kitchensink/data/MemberListProducer.java",
       "relative_path": "src/main/java/org/jboss/as/quickstarts/kitchensink/data/MemberListProducer.java",
       "documentation_path": null,
       "visualization_path": null,
@@ -69,7 +69,7 @@
       "errors": []
     },
     {
-      "file_path": "/var/folders/rs/6z8_9p_51wq7xybv5wrnmjxr0000gn/T/codecomprehender_repo_892j9eru/src/main/java/org/jboss/as/quickstarts/kitchensink/data/MemberRepository.java",
+      "file_path": "/var/folders/rs/6z8_9p_51wq7xybv5wrnmjxr0000gn/T/codecomprehender_repo_bbi6kzvp/src/main/java/org/jboss/as/quickstarts/kitchensink/data/MemberRepository.java",
       "relative_path": "src/main/java/org/jboss/as/quickstarts/kitchensink/data/MemberRepository.java",
       "documentation_path": null,
       "visualization_path": null,
@@ -77,7 +77,7 @@
       "errors": []
     },
     {
-      "file_path": "/var/folders/rs/6z8_9p_51wq7xybv5wrnmjxr0000gn/T/codecomprehender_repo_892j9eru/src/main/java/org/jboss/as/quickstarts/kitchensink/rest/MemberResourceRESTService.java",
+      "file_path": "/var/folders/rs/6z8_9p_51wq7xybv5wrnmjxr0000gn/T/codecomprehender_repo_bbi6kzvp/src/main/java/org/jboss/as/quickstarts/kitchensink/rest/MemberResourceRESTService.java",
       "relative_path": "src/main/java/org/jboss/as/quickstarts/kitchensink/rest/MemberResourceRESTService.java",
       "documentation_path": null,
       "visualization_path": null,
@@ -85,7 +85,7 @@
       "errors": []
     },
     {
-      "file_path": "/var/folders/rs/6z8_9p_51wq7xybv5wrnmjxr0000gn/T/codecomprehender_repo_892j9eru/src/test/java/org/jboss/as/quickstarts/kitchensink/test/RemoteMemberRegistrationIT.java",
+      "file_path": "/var/folders/rs/6z8_9p_51wq7xybv5wrnmjxr0000gn/T/codecomprehender_repo_bbi6kzvp/src/test/java/org/jboss/as/quickstarts/kitchensink/test/RemoteMemberRegistrationIT.java",
       "relative_path": "src/test/java/org/jboss/as/quickstarts/kitchensink/test/RemoteMemberRegistrationIT.java",
       "documentation_path": null,
       "visualization_path": null,
@@ -93,7 +93,7 @@
       "errors": []
     },
     {
-      "file_path": "/var/folders/rs/6z8_9p_51wq7xybv5wrnmjxr0000gn/T/codecomprehender_repo_892j9eru/src/test/java/org/jboss/as/quickstarts/kitchensink/test/MemberRegistrationIT.java",
+      "file_path": "/var/folders/rs/6z8_9p_51wq7xybv5wrnmjxr0000gn/T/codecomprehender_repo_bbi6kzvp/src/test/java/org/jboss/as/quickstarts/kitchensink/test/MemberRegistrationIT.java",
       "relative_path": "src/test/java/org/jboss/as/quickstarts/kitchensink/test/MemberRegistrationIT.java",
       "documentation_path": null,
       "visualization_path": null,
@@ -101,7 +101,7 @@
       "errors": []
     },
     {
-      "file_path": "/var/folders/rs/6z8_9p_51wq7xybv5wrnmjxr0000gn/T/codecomprehender_repo_892j9eru/src/test/java/org/jboss/as/quickstarts/kitchensink/test/config/MongoDBConfig.java",
+      "file_path": "/var/folders/rs/6z8_9p_51wq7xybv5wrnmjxr0000gn/T/codecomprehender_repo_bbi6kzvp/src/test/java/org/jboss/as/quickstarts/kitchensink/test/config/MongoDBConfig.java",
       "relative_path": "src/test/java/org/jboss/as/quickstarts/kitchensink/test/config/MongoDBConfig.java",
       "documentation_path": null,
       "visualization_path": null,
@@ -118,11 +118,11 @@
     "architecture_analyzed_files": 13
   },
   "performance_metrics": {
-    "total_processing_time": 9.91,
-    "file_processing_time": 9.12,
+    "total_processing_time": 9.17,
+    "file_processing_time": 8.37,
     "visualization_time": 0.13,
-    "files_per_minute": 78.7,
-    "avg_time_per_file": 0.7,
+    "files_per_minute": 85.0,
+    "avg_time_per_file": 0.64,
     "performance_profile": "balanced",
     "concurrency_settings": {
       "max_concurrent_files": 12,
@@ -131,26 +131,26 @@
       "rate_limit_delay": 0.3
     },
     "parallel_processing_used": true,
-    "total_relationships": 30,
+    "total_relationships": 31,
     "implicit_relationships_added": 0
   },
   "repository_info": {
-    "path": "/var/folders/rs/6z8_9p_51wq7xybv5wrnmjxr0000gn/T/codecomprehender_repo_892j9eru",
+    "path": "/var/folders/rs/6z8_9p_51wq7xybv5wrnmjxr0000gn/T/codecomprehender_repo_bbi6kzvp",
     "name": "kitchensink",
     "java_files": [
-      "/var/folders/rs/6z8_9p_51wq7xybv5wrnmjxr0000gn/T/codecomprehender_repo_892j9eru/src/main/java/org/jboss/as/quickstarts/kitchensink/Main.java",
-      "/var/folders/rs/6z8_9p_51wq7xybv5wrnmjxr0000gn/T/codecomprehender_repo_892j9eru/src/main/java/org/jboss/as/quickstarts/kitchensink/config/ApplicationConfiguration.java",
-      "/var/folders/rs/6z8_9p_51wq7xybv5wrnmjxr0000gn/T/codecomprehender_repo_892j9eru/src/main/java/org/jboss/as/quickstarts/kitchensink/utils/Resources.java",
-      "/var/folders/rs/6z8_9p_51wq7xybv5wrnmjxr0000gn/T/codecomprehender_repo_892j9eru/src/main/java/org/jboss/as/quickstarts/kitchensink/controller/MemberController.java",
-      "/var/folders/rs/6z8_9p_51wq7xybv5wrnmjxr0000gn/T/codecomprehender_repo_892j9eru/src/main/java/org/jboss/as/quickstarts/kitchensink/model/Member.java",
-      "/var/folders/rs/6z8_9p_51wq7xybv5wrnmjxr0000gn/T/codecomprehender_repo_892j9eru/src/main/java/org/jboss/as/quickstarts/kitchensink/model/DatabaseSequence.java",
-      "/var/folders/rs/6z8_9p_51wq7xybv5wrnmjxr0000gn/T/codecomprehender_repo_892j9eru/src/main/java/org/jboss/as/quickstarts/kitchensink/service/MemberRegistration.java",
-      "/var/folders/rs/6z8_9p_51wq7xybv5wrnmjxr0000gn/T/codecomprehender_repo_892j9eru/src/main/java/org/jboss/as/quickstarts/kitchensink/data/MemberListProducer.java",
-      "/var/folders/rs/6z8_9p_51wq7xybv5wrnmjxr0000gn/T/codecomprehender_repo_892j9eru/src/main/java/org/jboss/as/quickstarts/kitchensink/data/MemberRepository.java",
-      "/var/folders/rs/6z8_9p_51wq7xybv5wrnmjxr0000gn/T/codecomprehender_repo_892j9eru/src/main/java/org/jboss/as/quickstarts/kitchensink/rest/MemberResourceRESTService.java",
-      "/var/folders/rs/6z8_9p_51wq7xybv5wrnmjxr0000gn/T/codecomprehender_repo_892j9eru/src/test/java/org/jboss/as/quickstarts/kitchensink/test/RemoteMemberRegistrationIT.java",
-      "/var/folders/rs/6z8_9p_51wq7xybv5wrnmjxr0000gn/T/codecomprehender_repo_892j9eru/src/test/java/org/jboss/as/quickstarts/kitchensink/test/MemberRegistrationIT.java",
-      "/var/folders/rs/6z8_9p_51wq7xybv5wrnmjxr0000gn/T/codecomprehender_repo_892j9eru/src/test/java/org/jboss/as/quickstarts/kitchensink/test/config/MongoDBConfig.java"
+      "/var/folders/rs/6z8_9p_51wq7xybv5wrnmjxr0000gn/T/codecomprehender_repo_bbi6kzvp/src/main/java/org/jboss/as/quickstarts/kitchensink/Main.java",
+      "/var/folders/rs/6z8_9p_51wq7xybv5wrnmjxr0000gn/T/codecomprehender_repo_bbi6kzvp/src/main/java/org/jboss/as/quickstarts/kitchensink/config/ApplicationConfiguration.java",
+      "/var/folders/rs/6z8_9p_51wq7xybv5wrnmjxr0000gn/T/codecomprehender_repo_bbi6kzvp/src/main/java/org/jboss/as/quickstarts/kitchensink/utils/Resources.java",
+      "/var/folders/rs/6z8_9p_51wq7xybv5wrnmjxr0000gn/T/codecomprehender_repo_bbi6kzvp/src/main/java/org/jboss/as/quickstarts/kitchensink/controller/MemberController.java",
+      "/var/folders/rs/6z8_9p_51wq7xybv5wrnmjxr0000gn/T/codecomprehender_repo_bbi6kzvp/src/main/java/org/jboss/as/quickstarts/kitchensink/model/Member.java",
+      "/var/folders/rs/6z8_9p_51wq7xybv5wrnmjxr0000gn/T/codecomprehender_repo_bbi6kzvp/src/main/java/org/jboss/as/quickstarts/kitchensink/model/DatabaseSequence.java",
+      "/var/folders/rs/6z8_9p_51wq7xybv5wrnmjxr0000gn/T/codecomprehender_repo_bbi6kzvp/src/main/java/org/jboss/as/quickstarts/kitchensink/service/MemberRegistration.java",
+      "/var/folders/rs/6z8_9p_51wq7xybv5wrnmjxr0000gn/T/codecomprehender_repo_bbi6kzvp/src/main/java/org/jboss/as/quickstarts/kitchensink/data/MemberListProducer.java",
+      "/var/folders/rs/6z8_9p_51wq7xybv5wrnmjxr0000gn/T/codecomprehender_repo_bbi6kzvp/src/main/java/org/jboss/as/quickstarts/kitchensink/data/MemberRepository.java",
+      "/var/folders/rs/6z8_9p_51wq7xybv5wrnmjxr0000gn/T/codecomprehender_repo_bbi6kzvp/src/main/java/org/jboss/as/quickstarts/kitchensink/rest/MemberResourceRESTService.java",
+      "/var/folders/rs/6z8_9p_51wq7xybv5wrnmjxr0000gn/T/codecomprehender_repo_bbi6kzvp/src/test/java/org/jboss/as/quickstarts/kitchensink/test/RemoteMemberRegistrationIT.java",
+      "/var/folders/rs/6z8_9p_51wq7xybv5wrnmjxr0000gn/T/codecomprehender_repo_bbi6kzvp/src/test/java/org/jboss/as/quickstarts/kitchensink/test/MemberRegistrationIT.java",
+      "/var/folders/rs/6z8_9p_51wq7xybv5wrnmjxr0000gn/T/codecomprehender_repo_bbi6kzvp/src/test/java/org/jboss/as/quickstarts/kitchensink/test/config/MongoDBConfig.java"
     ],
     "java_file_count": 13
   },

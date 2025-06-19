@@ -6,9 +6,9 @@ import sys
 # Simple global logger setup
 logging.basicConfig(
     level=logging.INFO,
-    format='%(asctime)s - %(levelname)s - %(name)s - %(message)s',
-    datefmt='%H:%M:%S',
-    stream=sys.stdout
+    format="%(asctime)s - %(levelname)s - %(name)s - %(message)s",
+    datefmt="%H:%M:%S",
+    stream=sys.stdout,
 )
 
 # Reduce noise from external libraries
@@ -33,6 +33,7 @@ def log_progress(message: str, current: int = None, total: int = None):
     if current is not None and total is not None:
         logger.info(f"[{current}/{total}] {message}")
 
+
 def log_success(message: str):
     """Log success message."""
     logger.info(f"SUCCESS: {message}")
@@ -46,6 +47,3 @@ def log_warning(message: str):
 def log_error(message: str):
     """Log error message."""
     logger.error(f"ERROR: {message}")
-
-
- 

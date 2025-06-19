@@ -1,6 +1,7 @@
 """Configuration settings for the Code Comprehender."""
 
 import os
+
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -26,7 +27,7 @@ PERFORMANCE_PROFILES = {
         "max_concurrent_llm_requests": 5,
         "max_concurrent_viz_requests": 3,
         "rate_limit_delay": 0.5,
-        "expected_speedup": "2-3x faster than sequential"
+        "expected_speedup": "2-3x faster than sequential",
     },
     "balanced": {
         "description": "Good balance of speed and stability for most repositories",
@@ -35,7 +36,7 @@ PERFORMANCE_PROFILES = {
         "max_concurrent_llm_requests": 10,
         "max_concurrent_viz_requests": 6,
         "rate_limit_delay": 0.2,
-        "expected_speedup": "4-6x faster than sequential"
+        "expected_speedup": "4-6x faster than sequential",
     },
     "aggressive": {
         "description": "Maximum performance for large repositories with high API limits",
@@ -44,16 +45,17 @@ PERFORMANCE_PROFILES = {
         "max_concurrent_llm_requests": 20,
         "max_concurrent_viz_requests": 12,
         "rate_limit_delay": 0.1,
-        "expected_speedup": "8-12x faster than sequential"
-    }
+        "expected_speedup": "8-12x faster than sequential",
+    },
 }
+
 
 def get_performance_profile(profile_name: str = "balanced") -> dict:
     """Get performance profile settings.
-    
+
     Args:
         profile_name: Profile name (conservative, balanced, aggressive)
-        
+
     Returns:
         Dictionary with performance settings
     """
@@ -62,10 +64,10 @@ def get_performance_profile(profile_name: str = "balanced") -> dict:
 
 def recommend_performance_profile(file_count: int) -> str:
     """Recommend the best performance profile based on repository size.
-    
+
     Args:
         file_count: Number of Java files in the repository
-        
+
     Returns:
         Recommended profile name
     """
@@ -79,15 +81,16 @@ def recommend_performance_profile(file_count: int) -> str:
 
 def get_profile_description(profile_name: str) -> str:
     """Get a human-readable description of a performance profile.
-    
+
     Args:
         profile_name: Profile name
-        
+
     Returns:
         Description string
     """
     profile = get_performance_profile(profile_name)
     return f"{profile.get('description', 'Unknown profile')} - {profile.get('best_for', '')}"
+
 
 # OpenAI Configuration
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")

@@ -12,19 +12,13 @@
       "target_file": "MongoDBContainer.java",
       "target_class": "MongoDBContainer",
       "relationship_type": "import",
-      "description": "Imports MongoDBContainer class from Testcontainers for managing MongoDB instances."
+      "description": "Imports MongoDBContainer class from Testcontainers for MongoDB setup."
     },
     {
       "target_file": "Configuration.java",
       "target_class": "Configuration",
       "relationship_type": "import",
-      "description": "Imports Configuration annotation from Spring framework to define this class as a configuration class."
-    },
-    {
-      "target_file": "Container.java",
-      "target_class": "Container",
-      "relationship_type": "import",
-      "description": "Imports Container annotation from Testcontainers to manage lifecycle of the MongoDB container."
+      "description": "Imports Configuration annotation from Spring framework."
     }
   ],
   "provides_to": []

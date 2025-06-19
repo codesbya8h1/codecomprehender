@@ -30,60 +30,53 @@ import org.testcontainers.junit.jupiter.Testcontainers;
 import java.util.logging.Logger;
 
 /**
- * MemberRegistrationIT is an integration test class for testing the MemberRegistration service.
- * This class uses Spring Boot's testing framework to load the application context and 
- * perform tests on the member registration functionality.
+ * MemberRegistrationIT is an integration test class that verifies the functionality of the MemberRegistration service.
+ * This class uses Spring Boot's testing framework to load the application context and test the registration of a new member.
  * 
- * The class is annotated with @RunWith(SpringRunner.class) to enable Spring's testing support,
- * and @Testcontainers to indicate that it uses Testcontainers for integration testing.
+ * Design Patterns: This class follows the Dependency Injection pattern by using Spring's @Autowired annotation to inject dependencies.
  * 
- * The tests are executed in a Spring Boot context that includes the Main application class 
- * and MongoDB configuration.
- * 
- * Author: Red Hat, Inc.
+ * Author: JBoss Community
  * Version: 1.0
  * Since: 2015
  * 
  * Related Classes: 
- * - Main: The main application class for the kitchensink application.
- * - Member: The model class representing a member.
- * - MemberRegistration: The service class responsible for member registration.
+ * - Member: Represents a member entity.
+ * - MemberRegistration: Service responsible for member registration.
  * 
  * Usage Example:
- * To run this test, execute the test suite using a compatible test runner that supports JUnit.
- * Typical workflow involves running this test to ensure that member registration works as expected.
+ * To run this test, ensure that the application context is properly configured with MongoDB and the necessary beans are available.
  * 
- * Thread Safety: 
- * This class is not thread-safe as it is designed for single-threaded test execution.
+ * Thread Safety: This class is not thread-safe as it is designed to run in a single-threaded test environment.
  */
 @RunWith(SpringRunner.class)
 @Testcontainers
 @SpringBootTest(classes = {Main.class, MongoDBConfig.class})
 public class MemberRegistrationIT {
 
-    // Autowired MemberRegistration service for registering members
+    // MemberRegistration service used to register new members
     @Autowired
     MemberRegistration memberRegistration;
 
-    // Autowired Logger for logging test information
+    // Logger instance for logging test information
     @Autowired
     Logger log;
 
     /**
-     * Tests the member registration functionality.
+     * Tests the registration of a new member.
+     * This method creates a new Member object, sets its properties, and attempts to register it using the memberRegistration service.
      * 
-     * This method creates a new Member instance, sets its properties, and attempts to register it
-     * using the memberRegistration service. It verifies that the member is successfully registered 
-     * by checking that the ID is not null after registration.
+     * Algorithm:
+     * 1. Create a new Member instance and set its name, email, and phone number.
+     * 2. Call the register method of memberRegistration to persist the new member.
+     * 3. Assert that the member's ID is not null, indicating successful registration.
+     * 4. Log the successful registration of the member.
      * 
-     * @throws Exception if the registration process fails
+     * @throws Exception if the registration process fails.
      * 
-     * Expected Behavior:
-     * - A new member is created and registered.
-     * - The member's ID should be generated and not null after registration.
+     * Performance Considerations: The performance of this test is dependent on the underlying database operations.
      * 
-     * Exception Handling:
-     * If any exception occurs during the registration process, the test will fail with the exception message.
+     * Usage Example:
+     * This method can be executed as part of a test suite to validate member registration functionality.
      */
     @Test
     public void testRegister() {
@@ -110,7 +103,7 @@ public class MemberRegistrationIT {
             // Log the successful registration of the new member with their ID
             log.info(newMember.getName() + " was persisted with id " + newMember.getId());
         } catch (Exception e) {
-            // If an exception occurs, fail the test and log the exception message
+            // If an exception occurs during registration, fail the test and log the error message
             fail(e.getMessage());
         }
     }

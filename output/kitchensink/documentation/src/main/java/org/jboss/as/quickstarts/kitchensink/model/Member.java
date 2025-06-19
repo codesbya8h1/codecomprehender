@@ -34,17 +34,18 @@ import java.math.BigInteger;
 /**
  * The Member class represents a member entity in the application.
  * It is mapped to a MongoDB document in the "members" collection.
- * This class implements Serializable to allow for object serialization.
+ * This class encapsulates member details such as ID, email, name, and phone number.
  * 
  * Design Patterns: This class follows the Data Transfer Object (DTO) pattern,
- * encapsulating member data and providing getter and setter methods for access.
+ * allowing for easy transfer of member data between different layers of the application.
  * 
  * Author: Red Hat, Inc.
  * Version: 1.0
  * Since: 2015
  * 
  * Related Classes: 
- * - This class is related to the database operations that manage member entities.
+ * - MemberService: Service class for managing member operations.
+ * - MemberRepository: Repository interface for database operations on Member entities.
  * 
  * Usage Example:
  * Member member = new Member();
@@ -52,33 +53,37 @@ import java.math.BigInteger;
  * member.setName("John Doe");
  * member.setPhoneNumber("1234567890");
  * 
- * Thread Safety: This class is not thread-safe as it does not implement any 
- * synchronization mechanisms. It is intended for use in a single-threaded context 
- * or where external synchronization is provided.
+ * Thread Safety: This class is not thread-safe. Instances of Member should be used
+ * in a single-threaded context or synchronized externally when accessed by multiple threads.
  */
-@Document(collection = "members") // Indicates that this class is a MongoDB document
+@Document(collection = "members")
 public class Member implements Serializable {
 
-    @Transient // Indicates that this field should not be persisted in the database
-    public static final String SEQUENCE_NAME = "members_sequence"; // Constant for the sequence name
+    // Constant for the sequence name used for generating unique member IDs
+    @Transient
+    public static final String SEQUENCE_NAME = "members_sequence";
 
-    @Id // Marks this field as the primary key for the MongoDB document
-    private BigInteger id; // Unique identifier for the member
+    // Unique identifier for the member, annotated with @Id for MongoDB
+    @Id
+    private BigInteger id;
 
-    @NotEmpty // Validation constraint ensuring the email is not empty
-    @Email // Validation constraint ensuring the email is a valid email format
-    @Indexed(unique = true) // Ensures that the email field is unique in the database
-    private String email; // Email address of the member
+    // Email of the member, must be non-empty, valid email format, and unique in the database
+    @NotEmpty
+    @Email
+    @Indexed(unique = true)
+    private String email;
 
-    @NotEmpty // Validation constraint ensuring the name is not empty
-    @Size(min = 1, max = 25) // Validation constraint ensuring the name length is between 1 and 25 characters
-    @Pattern(regexp = "[^0-9]*", message = "Must not contain numbers") // Validation constraint ensuring the name does not contain numbers
-    private String name; // Name of the member
+    // Name of the member, must be non-empty, between 1 and 25 characters, and must not contain numbers
+    @NotEmpty
+    @Size(min = 1, max = 25)
+    @Pattern(regexp = "[^0-9]*", message = "Must not contain numbers")
+    private String name;
 
-    @NotNull // Validation constraint ensuring the phone number is not null
-    @Size(min = 10, max = 12) // Validation constraint ensuring the phone number length is between 10 and 12 characters
-    @Digits(fraction = 0, integer = 12) // Validation constraint ensuring the phone number is a valid integer
-    private String phoneNumber; // Phone number of the member
+    // Phone number of the member, must be non-null, between 10 and 12 characters, and numeric
+    @NotNull
+    @Size(min = 10, max = 12)
+    @Digits(fraction = 0, integer = 12)
+    private String phoneNumber;
 
     /**
      * Gets the unique identifier of the member.
@@ -86,31 +91,33 @@ public class Member implements Serializable {
      * @return BigInteger representing the member's ID.
      */
     public BigInteger getId() {
-        return id; // Return the member's ID
+        return id;
     }
 
     /**
      * Sets the unique identifier of the member.
      * 
      * @param id BigInteger representing the member's ID.
+     *            Must be a valid non-null value.
      */
     public void setId(BigInteger id) {
         this.id = id; // Assign the provided ID to the member's ID field
     }
 
     /**
-     * Gets the email address of the member.
+     * Gets the email of the member.
      * 
-     * @return String representing the member's email address.
+     * @return String representing the member's email.
      */
     public String getEmail() {
-        return email; // Return the member's email address
+        return email;
     }
 
     /**
-     * Sets the email address of the member.
+     * Sets the email of the member.
      * 
-     * @param email String representing the member's email address.
+     * @param email String representing the member's email.
+     *               Must be a valid non-empty email format.
      */
     public void setEmail(String email) {
         this.email = email; // Assign the provided email to the member's email field
@@ -122,13 +129,14 @@ public class Member implements Serializable {
      * @return String representing the member's name.
      */
     public String getName() {
-        return name; // Return the member's name
+        return name;
     }
 
     /**
      * Sets the name of the member.
      * 
      * @param name String representing the member's name.
+     *             Must be non-empty and between 1 and 25 characters, without numbers.
      */
     public void setName(String name) {
         this.name = name; // Assign the provided name to the member's name field
@@ -140,13 +148,14 @@ public class Member implements Serializable {
      * @return String representing the member's phone number.
      */
     public String getPhoneNumber() {
-        return phoneNumber; // Return the member's phone number
+        return phoneNumber;
     }
 
     /**
      * Sets the phone number of the member.
      * 
      * @param phoneNumber String representing the member's phone number.
+     *                    Must be non-null and between 10 and 12 numeric characters.
      */
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber; // Assign the provided phone number to the member's phone number field

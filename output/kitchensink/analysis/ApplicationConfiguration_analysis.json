@@ -12,55 +12,55 @@
       "target_file": "DatabaseSequence.java",
       "target_class": "DatabaseSequence",
       "relationship_type": "import",
-      "description": "Imports the DatabaseSequence model for collection management."
+      "description": "Represents a database sequence model used for MongoDB collection."
     },
     {
       "target_file": "Member.java",
       "target_class": "Member",
       "relationship_type": "import",
-      "description": "Imports the Member model for collection management."
+      "description": "Represents a member model used for MongoDB collection."
     },
     {
       "target_file": "MongoOperations.java",
       "target_class": "MongoOperations",
       "relationship_type": "import",
-      "description": "Uses MongoOperations for database operations."
+      "description": "Interface for MongoDB operations."
     },
     {
       "target_file": "ValidatingMongoEventListener.java",
       "target_class": "ValidatingMongoEventListener",
       "relationship_type": "import",
-      "description": "Provides a bean for validating MongoDB events."
+      "description": "Listener for validating MongoDB events."
     },
     {
       "target_file": "LocalValidatorFactoryBean.java",
       "target_class": "LocalValidatorFactoryBean",
       "relationship_type": "import",
-      "description": "Imports LocalValidatorFactoryBean for validation purposes."
+      "description": "Factory bean for creating a local validator."
     },
     {
       "target_file": "ApplicationReadyEvent.java",
       "target_class": "ApplicationReadyEvent",
       "relationship_type": "import",
-      "description": "Listens for application ready events."
+      "description": "Event indicating that the application is ready."
     },
     {
       "target_file": "ApplicationListener.java",
       "target_class": "ApplicationListener",
       "relationship_type": "import",
-      "description": "Implements ApplicationListener to handle application events."
+      "description": "Interface for listening to application events."
     }
   ],
   "provides_to": [
     {
-      "interface_name": "ValidatingMongoEventListener",
+      "interface_name": "ApplicationListener<ApplicationReadyEvent>",
       "service_type": "service",
-      "description": "Provides a bean for validating MongoDB events."
+      "description": "Listens for application ready events to manage MongoDB collections."
     },
     {
-      "interface_name": "LocalValidatorFactoryBean",
+      "interface_name": "Bean",
       "service_type": "service",
-      "description": "Provides a bean for validation."
+      "description": "Provides beans for validating MongoDB events and local validation."
     }
   ]
 }

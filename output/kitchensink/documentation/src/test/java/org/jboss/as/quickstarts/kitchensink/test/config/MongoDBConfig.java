@@ -7,49 +7,56 @@ import org.testcontainers.junit.jupiter.Container;
 
 /**
  * MongoDBConfig is a configuration class that sets up a MongoDB container 
- * using Testcontainers for integration testing purposes. This class is 
- * annotated with @Configuration, indicating that it provides Spring 
- * configuration.
+ * for integration testing using Testcontainers. This class is responsible 
+ * for initializing the MongoDB container and exposing the necessary ports 
+ * for communication during tests.
  * 
- * The MongoDB container is initialized with the latest MongoDB image 
- * and exposes the default MongoDB port (27017). The container is started 
- * statically, and the mapped port is set as a system property for 
- * accessibility in tests.
+ * <p>
+ * The class utilizes the Singleton design pattern to ensure that only one 
+ * instance of the MongoDB container is created and used throughout the 
+ * application context. The container is configured to use the latest 
+ * version of MongoDB and exposes the default MongoDB port (27017).
+ * </p>
  * 
+ * <p>
  * Author: [Your Name]
  * Version: 1.0
  * Since: 2023-10-01
+ * </p>
  * 
- * Related Classes: 
- * - MongoDBContainer (from Testcontainers)
- * 
+ * <p>
  * Usage Example:
- * To use this configuration in your tests, simply include it in your 
- * Spring context. The MongoDB container will be automatically started 
- * before your tests run.
+ * <pre>
+ *     @SpringBootTest
+ *     public class MyIntegrationTest {
+ *         // Test methods that require MongoDB access can be defined here
+ *     }
+ * </pre>
+ * </p>
  * 
- * Thread Safety: 
- * This class is not thread-safe as it initializes a static container 
- * that is shared across tests. Ensure that tests are run in a controlled 
- * environment to avoid conflicts.
+ * <p>
+ * Thread Safety: This class is not thread-safe as it initializes a static 
+ * container that is shared across tests. Ensure that tests are run in a 
+ * controlled environment to avoid conflicts.
+ * </p>
  */
 @Configuration
 public class MongoDBConfig {
-    
+
     // Declaring a static MongoDBContainer instance to manage the MongoDB lifecycle
     @Container
     public static MongoDBContainer mongoDBContainer = new MongoDBContainer("mongo:latest")
             .withExposedPorts(27017); // Exposing the default MongoDB port
 
-    // Static block to start the MongoDB container and set system properties
+    // Static block to initialize the MongoDB container and set system properties
     static {
         // Starting the MongoDB container
         mongoDBContainer.start();
-        
+
         // Retrieving the mapped port for the MongoDB container
         Integer port = mongoDBContainer.getMappedPort(27017);
-        
-        // Setting the mapped port as a system property for use in tests
+
+        // Setting a system property to allow other components to access the MongoDB port
         System.setProperty("mongodb.container.port", String.valueOf(port));
     }
 }

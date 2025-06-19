@@ -1,12 +1,13 @@
 """LLM model presets with optimized configurations for different OpenAI models."""
 
-from typing import Dict, Any
 from dataclasses import dataclass
+from typing import Dict
 
 
 @dataclass
 class LLMPreset:
     """Configuration preset for an LLM model."""
+
     name: str
     model_name: str
     context_window: int
@@ -23,7 +24,6 @@ LLM_PRESETS: Dict[str, LLMPreset] = {
         max_chunk_size=15000,
         temperature=0.1,
     ),
-    
     "gpt-4o-mini": LLMPreset(
         name="gpt-4o-mini",
         model_name="gpt-4o-mini",
@@ -31,7 +31,6 @@ LLM_PRESETS: Dict[str, LLMPreset] = {
         max_chunk_size=120000,
         temperature=0.1,
     ),
-    
     "gpt-4o": LLMPreset(
         name="gpt-4o",
         model_name="gpt-4o",
@@ -44,26 +43,28 @@ LLM_PRESETS: Dict[str, LLMPreset] = {
 
 def get_preset(preset_name: str) -> LLMPreset:
     """Get an LLM preset by name.
-    
+
     Args:
         preset_name: Name of the preset to retrieve
-        
+
     Returns:
         LLMPreset object
-        
+
     Raises:
         ValueError: If preset name is not found
     """
     if preset_name not in LLM_PRESETS:
         available = ", ".join(LLM_PRESETS.keys())
-        raise ValueError(f"Unknown preset '{preset_name}'. Available presets: {available}")
-    
+        raise ValueError(
+            f"Unknown preset '{preset_name}'. Available presets: {available}"
+        )
+
     return LLM_PRESETS[preset_name]
 
 
 def get_default_preset() -> LLMPreset:
     """Get the default LLM preset.
-    
+
     Returns:
         Default LLMPreset (gpt-4o-mini)
     """

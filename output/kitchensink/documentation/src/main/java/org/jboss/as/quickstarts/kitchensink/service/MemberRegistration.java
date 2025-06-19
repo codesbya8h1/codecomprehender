@@ -36,29 +36,29 @@ import java.util.logging.Logger;
 /**
  * The MemberRegistration class is responsible for handling the registration of new members
  * in the system. It interacts with the MongoDB database to store member information and
- * manage unique member identifiers through a sequence generator.
- *
- * This class follows the Service design pattern, encapsulating the business logic related
- * to member registration. It utilizes Spring's dependency injection to manage its dependencies.
- *
+ * manage unique sequence generation for member IDs.
+ * 
+ * This class uses the Singleton design pattern to ensure that only one instance of 
+ * MemberRegistration exists within the application context.
+ * 
  * Author: Red Hat, Inc.
  * Version: 1.0
  * Since: 2015
- *
- * Related Classes:
+ * 
+ * Related Classes: 
  * - MemberRepository: Interface for member data access.
- * - DatabaseSequence: Model representing the sequence generator for unique IDs.
+ * - DatabaseSequence: Model representing the sequence for generating unique IDs.
  * - Member: Model representing a member entity.
- *
+ * 
  * Usage Example:
  * MemberRegistration memberRegistration = new MemberRegistration(mongoOperations, memberRepository, mongoClient);
  * Member newMember = new Member();
  * newMember.setName("John Doe");
  * memberRegistration.register(newMember);
- *
+ * 
  * Thread Safety: This class is not thread-safe as it relies on MongoDB operations that are
  * inherently thread-safe. However, care should be taken when using this class in a multi-threaded
- * environment to ensure that member registration is handled correctly.
+ * environment to avoid race conditions during member registration.
  */
 @Service
 public class MemberRegistration {
@@ -74,39 +74,39 @@ public class MemberRegistration {
 
     /**
      * Constructor for MemberRegistration.
-     *
-     * @param mongoOperations the MongoOperations instance used for MongoDB interactions
-     * @param memberRepository the MemberRepository instance for member data access
-     * @param mongo the MongoClient instance for MongoDB connection (not used directly)
+     * 
+     * @param mongoOperations The MongoOperations instance used for MongoDB interactions.
+     * @param memberRepository The MemberRepository instance for member data access.
+     * @param mongo The MongoClient instance for MongoDB connection (not used directly).
      */
     @Autowired
     public MemberRegistration(final MongoOperations mongoOperations, final MemberRepository memberRepository, MongoClient mongo) {
         // Initialize the logger for this class
         log = Logger.getLogger(getClass().getName());
         
-        // Assign the MongoOperations instance to the class field
+        // Assign the provided MongoOperations instance to the class field
         this.mongoOperations = mongoOperations;
         
-        // Assign the MemberRepository instance to the class field
+        // Assign the provided MemberRepository instance to the class field
         this.memberRepository = memberRepository;
     }
 
     /**
      * Registers a new member in the system.
-     *
-     * This method generates a unique ID for the member using a sequence generator,
-     * then attempts to insert the member into the database. If the insertion fails,
-     * an exception is thrown.
-     *
-     * @param member the Member object to be registered
-     * @throws Exception if there is an error during member registration, such as a write error
+     * 
+     * @param member The Member object containing the details of the member to be registered.
+     * @throws Exception if there is an error during registration, such as a MongoDB write error.
+     * 
+     * This method generates a unique ID for the member using the generateSequence method,
+     * then attempts to insert the member into the database. If a MongoWriteException occurs,
+     * it wraps the exception and throws a generic Exception with the error message.
      */
     public void register(Member member) throws Exception {
         // Generate a unique ID for the member using the sequence generator
         member.setId(generateSequence(Member.SEQUENCE_NAME));
         
-        // Attempt to insert the member into the repository
         try {
+            // Attempt to insert the new member into the repository
             memberRepository.insert(member);
         } catch (MongoWriteException e) {
             // If a MongoWriteException occurs, throw a new Exception with the error message
@@ -116,32 +116,23 @@ public class MemberRegistration {
 
     /**
      * Generates a unique sequence number for a given sequence name.
-     *
-     * This method retrieves and increments the sequence number from the database.
-     * If the sequence does not exist, it initializes it to 1.
-     *
-     * @param sequenceName the name of the sequence to generate
-     * @return a BigInteger representing the next sequence number
+     * 
+     * @param sequenceName The name of the sequence to be generated.
+     * @return A BigInteger representing the next sequence number.
+     * 
+     * This method uses MongoDB's findAndModify operation to atomically increment the sequence
+     * number in the database. If the sequence does not exist, it initializes it to 1.
      */
     private BigInteger generateSequence(String sequenceName) {
         // Create a query to find the sequence document by its ID
-        Query query = Query.query(Criteria.where("_id").is(sequenceName));
-        
-        // Create an update operation to increment the sequence by 1
-        Update update = new Update().inc("sequence", 1);
-        
-        // Define options for the find and modify operation
-        FindAndModifyOptions options = FindAndModifyOptions.options().returnNew(true).upsert(true);
-        
-        // Execute the find and modify operation to get the updated sequence
         DatabaseSequence counter = mongoOperations.findAndModify(
-                query,
-                update,
-                options,
-                DatabaseSequence.class
+                Query.query(Criteria.where("_id").is(sequenceName)), // Query to find the sequence by ID
+                new Update().inc("sequence", 1), // Increment the sequence field by 1
+                FindAndModifyOptions.options().returnNew(true).upsert(true), // Options to return the new value and upsert if not found
+                DatabaseSequence.class // The class type of the document to return
         );
         
-        // Return the new sequence number or 1 if the counter is null
+        // Return the new sequence value if found, otherwise return BigInteger.ONE
         return !Objects.isNull(counter) ? counter.getSequence() : BigInteger.ONE;
     }
 }

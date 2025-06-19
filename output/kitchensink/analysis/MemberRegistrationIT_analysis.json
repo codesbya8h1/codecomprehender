@@ -24,13 +24,13 @@
       "target_file": "MemberRegistration.java",
       "target_class": "MemberRegistration",
       "relationship_type": "import",
-      "description": "Service class for handling member registration logic"
+      "description": "Service class for member registration logic"
     },
     {
       "target_file": "MongoDBConfig.java",
       "target_class": "MongoDBConfig",
       "relationship_type": "import",
-      "description": "Configuration class for MongoDB settings"
+      "description": "Configuration class for MongoDB setup"
     },
     {
       "target_file": "Logger.java",
