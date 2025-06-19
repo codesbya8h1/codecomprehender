@@ -36,7 +36,7 @@ class AsyncCodeDocumenter:
         self.java_parser = JavaParser()
         self.token_counter = TokenCounter()
 
-        # Remove verbose initialization logging
+
 
     async def process_file_async(
         self, java_file_path: str, output_dir: str = OUTPUT_DIR
@@ -53,7 +53,6 @@ class AsyncCodeDocumenter:
         if not os.path.exists(java_file_path):
             raise FileNotFoundError(f"Java file not found: {java_file_path}")
 
-        # Remove verbose per-file processing logging
 
         # Read the Java file
         try:
@@ -116,7 +115,7 @@ class AsyncCodeDocumenter:
 
         # Save to output file
         output_path = self._save_output(java_file_path, final_code, output_dir)
-        # Remove verbose completion logging
+
 
         return output_path
 
@@ -337,7 +336,7 @@ class AsyncCodeDocumenter:
         Returns:
             Path to the saved output file
         """
-        # Create output directory if it doesn't exist
+
         os.makedirs(output_dir, exist_ok=True)
 
         # Generate output filename
@@ -373,7 +372,7 @@ class AsyncCodeDocumenter:
         async def _process_all():
             documenter = AsyncCodeDocumenter(preset_name, performance_profile)
 
-            # Create tasks for all files
+    
             tasks = []
             for file_path in file_paths:
                 task = documenter.process_file_async(file_path, output_dir)

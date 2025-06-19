@@ -12,11 +12,7 @@ from code_comprehender.llm_presets import get_default_preset
 # LLM Configuration (using preset system)
 _default_preset = get_default_preset()
 DEFAULT_MODEL = _default_preset.model_name
-DEFAULT_CONTEXT_WINDOW = _default_preset.context_window
 MAX_CHUNK_SIZE = _default_preset.max_chunk_size
-
-# Token counting
-TOKENS_PER_CHAR_ESTIMATE = 0.25  # Rough estimate for token counting, 4 chars = 1 token
 
 # Performance optimization settings for different repository sizes and use cases
 PERFORMANCE_PROFILES = {
@@ -60,36 +56,6 @@ def get_performance_profile(profile_name: str = "balanced") -> dict:
         Dictionary with performance settings
     """
     return PERFORMANCE_PROFILES.get(profile_name, PERFORMANCE_PROFILES["balanced"])
-
-
-def recommend_performance_profile(file_count: int) -> str:
-    """Recommend the best performance profile based on repository size.
-
-    Args:
-        file_count: Number of Java files in the repository
-
-    Returns:
-        Recommended profile name
-    """
-    if file_count <= 20:
-        return "conservative"
-    elif file_count <= 50:
-        return "balanced"
-    else:
-        return "aggressive"
-
-
-def get_profile_description(profile_name: str) -> str:
-    """Get a human-readable description of a performance profile.
-
-    Args:
-        profile_name: Profile name
-
-    Returns:
-        Description string
-    """
-    profile = get_performance_profile(profile_name)
-    return f"{profile.get('description', 'Unknown profile')} - {profile.get('best_for', '')}"
 
 
 # OpenAI Configuration

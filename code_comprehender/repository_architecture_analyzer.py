@@ -400,7 +400,7 @@ class RepositoryArchitectureAnalyzer:
         Returns:
             Path to the created visualization
         """
-        # Remove verbose visualization creation logging
+
 
         # Ensure all relationships are extracted from file analyses
         self._ensure_all_relationships_extracted()

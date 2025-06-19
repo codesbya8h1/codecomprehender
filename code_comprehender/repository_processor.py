@@ -325,7 +325,7 @@ class RepositoryProcessor:
         os.makedirs(os.path.join(repo_output_dir, "visualizations"), exist_ok=True)
         os.makedirs(os.path.join(repo_output_dir, "analysis"), exist_ok=True)
 
-        # Remove verbose output structure logging
+
         return repo_output_dir
 
     def _auto_scale_concurrency(self, file_count: int):

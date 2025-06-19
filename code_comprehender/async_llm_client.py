@@ -67,7 +67,7 @@ class AsyncLLMClient:
         self._request_count = 0
         self._start_time = None
 
-        # Remove verbose initialization logging
+
 
     async def document_code_async(self, code: str, chunk_name: str = "chunk") -> str:
         """Generate comprehensive documentation for Java code asynchronously.
@@ -150,9 +150,7 @@ class AsyncLLMClient:
         Returns:
             List of documented code strings
         """
-        # Remove verbose chunk processing logging
 
-        # Create tasks for all chunks
         tasks = []
         for i, chunk in enumerate(chunks):
             task = self._document_chunk_with_progress(chunk, i + 1, len(chunks))
@@ -171,7 +169,7 @@ class AsyncLLMClient:
             else:
                 results.append(result)
 
-        # Remove verbose completion logging
+
         return results
 
     async def _document_chunk_with_progress(
@@ -187,7 +185,7 @@ class AsyncLLMClient:
         Returns:
             Documented code string
         """
-        # Remove verbose chunk progress logging
+
 
         try:
             documented_code = await self.document_code_async(chunk.content, chunk.name)

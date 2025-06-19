@@ -32,7 +32,7 @@ class CodeDocumenter:
         self.llm_client = LLMClient(self.preset.model_name)
         self.token_counter = TokenCounter(self.preset.model_name)
 
-        # Remove verbose preset logging
+
 
     def process_file(self, java_file_path: str, output_dir: str = OUTPUT_DIR) -> str:
         """Process a single Java file.
@@ -76,7 +76,6 @@ class CodeDocumenter:
                     package=self.java_parser._extract_package_and_imports(code)[0],
                 )
             ]
-            # print('chunks: ', chunks)
         else:
             self.logger.info(
                 f"Large file ({total_tokens:,} tokens), creating {self.max_tokens:,} token chunks"
@@ -394,7 +393,7 @@ class CodeDocumenter:
         Returns:
             Path to the saved output file
         """
-        # Create output directory if it doesn't exist
+
         os.makedirs(output_dir, exist_ok=True)
 
         # Generate output file path

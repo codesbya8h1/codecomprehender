@@ -2,7 +2,7 @@
 
 import tiktoken
 
-from code_comprehender.config import DEFAULT_MODEL, MAX_CHUNK_SIZE
+from code_comprehender.config import DEFAULT_MODEL
 
 
 class TokenCounter:
@@ -30,27 +30,3 @@ class TokenCounter:
             The number of tokens in the text
         """
         return len(self.encoding.encode(text))
-
-    def is_within_limit(self, text: str, max_tokens: int = MAX_CHUNK_SIZE) -> bool:
-        """Check if the text is within the token limit.
-
-        Args:
-            text: The text to check
-            max_tokens: The maximum number of tokens allowed
-
-        Returns:
-            True if the text is within the limit, False otherwise
-        """
-        return self.count_tokens(text) <= max_tokens
-
-    def estimate_tokens_from_chars(self, char_count: int) -> int:
-        """Estimate token count from character count.
-
-        Args:
-            char_count: Number of characters
-
-        Returns:
-            Estimated number of tokens
-        """
-        # This is a rough estimate, actual counting is more accurate
-        return int(char_count * 0.25)

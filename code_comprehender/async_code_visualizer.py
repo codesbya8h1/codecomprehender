@@ -12,7 +12,7 @@ from pyvis.network import Network
 from code_comprehender.async_llm_client import AsyncLLMClient
 from code_comprehender.java_parser import CodeChunk, JavaParser
 from code_comprehender.llm_presets import get_default_preset, get_preset
-from code_comprehender.logger import get_logger, log_success, log_warning
+from code_comprehender.logger import get_logger, log_progress, log_success, log_warning
 from code_comprehender.prompts import VISUALIZATION_PROMPT
 from code_comprehender.token_counter import TokenCounter
 
@@ -63,8 +63,6 @@ class AsyncCodeVisualizer:
         # Visualization data
         self.nodes: Set[CodeNode] = set()
         self.relationships: List[CodeRelationship] = []
-
-        # Remove verbose initialization logging
 
     async def analyze_code_architecture_async(
         self, java_file_path: str
@@ -141,7 +139,7 @@ class AsyncCodeVisualizer:
         """
         self.logger.info(f"Starting parallel analysis of {len(chunks)} chunks")
 
-        # Create tasks for all chunks
+
         tasks = []
         for i, chunk in enumerate(chunks):
             task = self._analyze_chunk_with_progress(
@@ -217,7 +215,7 @@ class AsyncCodeVisualizer:
         Returns:
             LLM response content
         """
-        # Create the analysis prompt
+
         analysis_prompt = (
             f"Analyze this code for architectural relationships:\n\n{code}"
         )
@@ -629,7 +627,7 @@ class AsyncCodeVisualizer:
         async def _process_all():
             visualizer = AsyncCodeVisualizer(preset_name, performance_profile)
 
-            # Create tasks for all files
+    
             tasks = []
             for file_path in file_paths:
                 task = visualizer.process_file_async(file_path, output_dir)
