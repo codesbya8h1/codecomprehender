@@ -1,0 +1,298 @@
+{
+  "file_analyses": {
+    "MainApplication": {
+      "file_info": {
+        "name": "MainApplication",
+        "main_class": "MainApplication",
+        "file_type": "entry_point",
+        "purpose": "Main application entry point with main() method",
+        "is_entry_point": true,
+        "is_exit_point": false
+      },
+      "dependencies": [
+        {
+          "target_file": "UserController",
+          "type": "instantiation"
+        },
+        {
+          "target_file": "ConfigManager",
+          "type": "import"
+        }
+      ],
+      "provides_to": []
+    },
+    "UserController": {
+      "file_info": {
+        "name": "UserController",
+        "main_class": "UserController",
+        "file_type": "controller",
+        "purpose": "Handles user-related HTTP requests and coordinates business logic",
+        "is_entry_point": false,
+        "is_exit_point": false
+      },
+      "dependencies": [
+        {
+          "target_file": "UserService",
+          "type": "instantiation"
+        },
+        {
+          "target_file": "ValidationUtils",
+          "type": "static_call"
+        }
+      ],
+      "provides_to": []
+    },
+    "OrderController": {
+      "file_info": {
+        "name": "OrderController",
+        "main_class": "OrderController",
+        "file_type": "controller",
+        "purpose": "Manages order processing requests",
+        "is_entry_point": false,
+        "is_exit_point": false
+      },
+      "dependencies": [
+        {
+          "target_file": "OrderService",
+          "type": "instantiation"
+        },
+        {
+          "target_file": "PaymentService",
+          "type": "import"
+        }
+      ],
+      "provides_to": []
+    },
+    "UserService": {
+      "file_info": {
+        "name": "UserService",
+        "main_class": "UserService",
+        "file_type": "service",
+        "purpose": "Business logic for user management operations",
+        "is_entry_point": false,
+        "is_exit_point": false
+      },
+      "dependencies": [
+        {
+          "target_file": "User",
+          "type": "import"
+        },
+        {
+          "target_file": "DatabaseConnector",
+          "type": "instantiation"
+        }
+      ],
+      "provides_to": []
+    },
+    "OrderService": {
+      "file_info": {
+        "name": "OrderService",
+        "main_class": "OrderService",
+        "file_type": "service",
+        "purpose": "Handles order processing business logic",
+        "is_entry_point": false,
+        "is_exit_point": false
+      },
+      "dependencies": [
+        {
+          "target_file": "Order",
+          "type": "import"
+        },
+        {
+          "target_file": "PaymentService",
+          "type": "import"
+        }
+      ],
+      "provides_to": []
+    },
+    "PaymentService": {
+      "file_info": {
+        "name": "PaymentService",
+        "main_class": "PaymentService",
+        "file_type": "service",
+        "purpose": "Processes payment transactions",
+        "is_entry_point": false,
+        "is_exit_point": false
+      },
+      "dependencies": [
+        {
+          "target_file": "PaymentGateway",
+          "type": "instantiation"
+        }
+      ],
+      "provides_to": []
+    },
+    "User": {
+      "file_info": {
+        "name": "User",
+        "main_class": "User",
+        "file_type": "model",
+        "purpose": "User domain model with properties and validation",
+        "is_entry_point": false,
+        "is_exit_point": false
+      },
+      "dependencies": [],
+      "provides_to": []
+    },
+    "Order": {
+      "file_info": {
+        "name": "Order",
+        "main_class": "Order",
+        "file_type": "model",
+        "purpose": "Order domain model with business rules",
+        "is_entry_point": false,
+        "is_exit_point": false
+      },
+      "dependencies": [
+        {
+          "target_file": "User",
+          "type": "import"
+        }
+      ],
+      "provides_to": []
+    },
+    "ValidationUtils": {
+      "file_info": {
+        "name": "ValidationUtils",
+        "main_class": "ValidationUtils",
+        "file_type": "utility",
+        "purpose": "Common validation utility methods",
+        "is_entry_point": false,
+        "is_exit_point": false
+      },
+      "dependencies": [],
+      "provides_to": []
+    },
+    "ConfigManager": {
+      "file_info": {
+        "name": "ConfigManager",
+        "main_class": "ConfigManager",
+        "file_type": "config",
+        "purpose": "Application configuration management",
+        "is_entry_point": false,
+        "is_exit_point": false
+      },
+      "dependencies": [],
+      "provides_to": []
+    },
+    "DatabaseConnector": {
+      "file_info": {
+        "name": "DatabaseConnector",
+        "main_class": "DatabaseConnector",
+        "file_type": "exit_point",
+        "purpose": "Database connection and query execution",
+        "is_entry_point": false,
+        "is_exit_point": true
+      },
+      "dependencies": [],
+      "provides_to": []
+    },
+    "PaymentGateway": {
+      "file_info": {
+        "name": "PaymentGateway",
+        "main_class": "PaymentGateway",
+        "file_type": "exit_point",
+        "purpose": "External payment service integration",
+        "is_entry_point": false,
+        "is_exit_point": true
+      },
+      "dependencies": [],
+      "provides_to": []
+    }
+  },
+  "relationships": [
+    {
+      "from": "MainApplication",
+      "to": "UserController",
+      "type": "dependency",
+      "description": ""
+    },
+    {
+      "from": "MainApplication",
+      "to": "ConfigManager",
+      "type": "dependency",
+      "description": ""
+    },
+    {
+      "from": "UserController",
+      "to": "UserService",
+      "type": "dependency",
+      "description": ""
+    },
+    {
+      "from": "UserController",
+      "to": "ValidationUtils",
+      "type": "dependency",
+      "description": ""
+    },
+    {
+      "from": "OrderController",
+      "to": "OrderService",
+      "type": "dependency",
+      "description": ""
+    },
+    {
+      "from": "OrderController",
+      "to": "PaymentService",
+      "type": "dependency",
+      "description": ""
+    },
+    {
+      "from": "UserService",
+      "to": "User",
+      "type": "dependency",
+      "description": ""
+    },
+    {
+      "from": "UserService",
+      "to": "DatabaseConnector",
+      "type": "dependency",
+      "description": ""
+    },
+    {
+      "from": "OrderService",
+      "to": "Order",
+      "type": "dependency",
+      "description": ""
+    },
+    {
+      "from": "OrderService",
+      "to": "PaymentService",
+      "type": "dependency",
+      "description": ""
+    },
+    {
+      "from": "PaymentService",
+      "to": "PaymentGateway",
+      "type": "dependency",
+      "description": ""
+    },
+    {
+      "from": "Order",
+      "to": "User",
+      "type": "dependency",
+      "description": ""
+    }
+  ],
+  "summary": {
+    "total_files": 12,
+    "total_relationships": 12,
+    "file_types": {
+      "entry_point": 1,
+      "controller": 2,
+      "service": 3,
+      "model": 2,
+      "utility": 1,
+      "config": 1,
+      "exit_point": 2
+    },
+    "entry_points": [
+      "MainApplication"
+    ],
+    "exit_points": [
+      "DatabaseConnector",
+      "PaymentGateway"
+    ],
+    "architecture_pattern": "MVC (Model-View-Controller)"
+  }
+}

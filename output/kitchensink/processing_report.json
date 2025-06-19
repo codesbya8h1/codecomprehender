@@ -1,0 +1,158 @@
+{
+  "repository_url": "https://github.com/avacc/kitchensink/tree/main",
+  "output_directory": "output/kitchensink",
+  "documentation_enabled": false,
+  "visualization_enabled": true,
+  "processed_files": [
+    {
+      "file_path": "/var/folders/rs/6z8_9p_51wq7xybv5wrnmjxr0000gn/T/codecomprehender_repo_892j9eru/src/main/java/org/jboss/as/quickstarts/kitchensink/Main.java",
+      "relative_path": "src/main/java/org/jboss/as/quickstarts/kitchensink/Main.java",
+      "documentation_path": null,
+      "visualization_path": null,
+      "analysis_path": "output/kitchensink/analysis/Main_analysis.json",
+      "errors": []
+    },
+    {
+      "file_path": "/var/folders/rs/6z8_9p_51wq7xybv5wrnmjxr0000gn/T/codecomprehender_repo_892j9eru/src/main/java/org/jboss/as/quickstarts/kitchensink/config/ApplicationConfiguration.java",
+      "relative_path": "src/main/java/org/jboss/as/quickstarts/kitchensink/config/ApplicationConfiguration.java",
+      "documentation_path": null,
+      "visualization_path": null,
+      "analysis_path": "output/kitchensink/analysis/ApplicationConfiguration_analysis.json",
+      "errors": []
+    },
+    {
+      "file_path": "/var/folders/rs/6z8_9p_51wq7xybv5wrnmjxr0000gn/T/codecomprehender_repo_892j9eru/src/main/java/org/jboss/as/quickstarts/kitchensink/utils/Resources.java",
+      "relative_path": "src/main/java/org/jboss/as/quickstarts/kitchensink/utils/Resources.java",
+      "documentation_path": null,
+      "visualization_path": null,
+      "analysis_path": "output/kitchensink/analysis/Resources_analysis.json",
+      "errors": []
+    },
+    {
+      "file_path": "/var/folders/rs/6z8_9p_51wq7xybv5wrnmjxr0000gn/T/codecomprehender_repo_892j9eru/src/main/java/org/jboss/as/quickstarts/kitchensink/controller/MemberController.java",
+      "relative_path": "src/main/java/org/jboss/as/quickstarts/kitchensink/controller/MemberController.java",
+      "documentation_path": null,
+      "visualization_path": null,
+      "analysis_path": "output/kitchensink/analysis/MemberController_analysis.json",
+      "errors": []
+    },
+    {
+      "file_path": "/var/folders/rs/6z8_9p_51wq7xybv5wrnmjxr0000gn/T/codecomprehender_repo_892j9eru/src/main/java/org/jboss/as/quickstarts/kitchensink/model/Member.java",
+      "relative_path": "src/main/java/org/jboss/as/quickstarts/kitchensink/model/Member.java",
+      "documentation_path": null,
+      "visualization_path": null,
+      "analysis_path": "output/kitchensink/analysis/Member_analysis.json",
+      "errors": []
+    },
+    {
+      "file_path": "/var/folders/rs/6z8_9p_51wq7xybv5wrnmjxr0000gn/T/codecomprehender_repo_892j9eru/src/main/java/org/jboss/as/quickstarts/kitchensink/model/DatabaseSequence.java",
+      "relative_path": "src/main/java/org/jboss/as/quickstarts/kitchensink/model/DatabaseSequence.java",
+      "documentation_path": null,
+      "visualization_path": null,
+      "analysis_path": "output/kitchensink/analysis/DatabaseSequence_analysis.json",
+      "errors": []
+    },
+    {
+      "file_path": "/var/folders/rs/6z8_9p_51wq7xybv5wrnmjxr0000gn/T/codecomprehender_repo_892j9eru/src/main/java/org/jboss/as/quickstarts/kitchensink/service/MemberRegistration.java",
+      "relative_path": "src/main/java/org/jboss/as/quickstarts/kitchensink/service/MemberRegistration.java",
+      "documentation_path": null,
+      "visualization_path": null,
+      "analysis_path": "output/kitchensink/analysis/MemberRegistration_analysis.json",
+      "errors": []
+    },
+    {
+      "file_path": "/var/folders/rs/6z8_9p_51wq7xybv5wrnmjxr0000gn/T/codecomprehender_repo_892j9eru/src/main/java/org/jboss/as/quickstarts/kitchensink/data/MemberListProducer.java",
+      "relative_path": "src/main/java/org/jboss/as/quickstarts/kitchensink/data/MemberListProducer.java",
+      "documentation_path": null,
+      "visualization_path": null,
+      "analysis_path": "output/kitchensink/analysis/MemberListProducer_analysis.json",
+      "errors": []
+    },
+    {
+      "file_path": "/var/folders/rs/6z8_9p_51wq7xybv5wrnmjxr0000gn/T/codecomprehender_repo_892j9eru/src/main/java/org/jboss/as/quickstarts/kitchensink/data/MemberRepository.java",
+      "relative_path": "src/main/java/org/jboss/as/quickstarts/kitchensink/data/MemberRepository.java",
+      "documentation_path": null,
+      "visualization_path": null,
+      "analysis_path": "output/kitchensink/analysis/MemberRepository_analysis.json",
+      "errors": []
+    },
+    {
+      "file_path": "/var/folders/rs/6z8_9p_51wq7xybv5wrnmjxr0000gn/T/codecomprehender_repo_892j9eru/src/main/java/org/jboss/as/quickstarts/kitchensink/rest/MemberResourceRESTService.java",
+      "relative_path": "src/main/java/org/jboss/as/quickstarts/kitchensink/rest/MemberResourceRESTService.java",
+      "documentation_path": null,
+      "visualization_path": null,
+      "analysis_path": "output/kitchensink/analysis/MemberResourceRESTService_analysis.json",
+      "errors": []
+    },
+    {
+      "file_path": "/var/folders/rs/6z8_9p_51wq7xybv5wrnmjxr0000gn/T/codecomprehender_repo_892j9eru/src/test/java/org/jboss/as/quickstarts/kitchensink/test/RemoteMemberRegistrationIT.java",
+      "relative_path": "src/test/java/org/jboss/as/quickstarts/kitchensink/test/RemoteMemberRegistrationIT.java",
+      "documentation_path": null,
+      "visualization_path": null,
+      "analysis_path": "output/kitchensink/analysis/RemoteMemberRegistrationIT_analysis.json",
+      "errors": []
+    },
+    {
+      "file_path": "/var/folders/rs/6z8_9p_51wq7xybv5wrnmjxr0000gn/T/codecomprehender_repo_892j9eru/src/test/java/org/jboss/as/quickstarts/kitchensink/test/MemberRegistrationIT.java",
+      "relative_path": "src/test/java/org/jboss/as/quickstarts/kitchensink/test/MemberRegistrationIT.java",
+      "documentation_path": null,
+      "visualization_path": null,
+      "analysis_path": "output/kitchensink/analysis/MemberRegistrationIT_analysis.json",
+      "errors": []
+    },
+    {
+      "file_path": "/var/folders/rs/6z8_9p_51wq7xybv5wrnmjxr0000gn/T/codecomprehender_repo_892j9eru/src/test/java/org/jboss/as/quickstarts/kitchensink/test/config/MongoDBConfig.java",
+      "relative_path": "src/test/java/org/jboss/as/quickstarts/kitchensink/test/config/MongoDBConfig.java",
+      "documentation_path": null,
+      "visualization_path": null,
+      "analysis_path": "output/kitchensink/analysis/MongoDBConfig_analysis.json",
+      "errors": []
+    }
+  ],
+  "errors": [],
+  "summary": {
+    "total_files": 13,
+    "successful_files": 13,
+    "failed_files": 0,
+    "documentation_files": 0,
+    "architecture_analyzed_files": 13
+  },
+  "performance_metrics": {
+    "total_processing_time": 9.91,
+    "file_processing_time": 9.12,
+    "visualization_time": 0.13,
+    "files_per_minute": 78.7,
+    "avg_time_per_file": 0.7,
+    "performance_profile": "balanced",
+    "concurrency_settings": {
+      "max_concurrent_files": 12,
+      "max_concurrent_llm_requests": 15,
+      "max_concurrent_viz_requests": 6,
+      "rate_limit_delay": 0.3
+    },
+    "parallel_processing_used": true,
+    "total_relationships": 30,
+    "implicit_relationships_added": 0
+  },
+  "repository_info": {
+    "path": "/var/folders/rs/6z8_9p_51wq7xybv5wrnmjxr0000gn/T/codecomprehender_repo_892j9eru",
+    "name": "kitchensink",
+    "java_files": [
+      "/var/folders/rs/6z8_9p_51wq7xybv5wrnmjxr0000gn/T/codecomprehender_repo_892j9eru/src/main/java/org/jboss/as/quickstarts/kitchensink/Main.java",
+      "/var/folders/rs/6z8_9p_51wq7xybv5wrnmjxr0000gn/T/codecomprehender_repo_892j9eru/src/main/java/org/jboss/as/quickstarts/kitchensink/config/ApplicationConfiguration.java",
+      "/var/folders/rs/6z8_9p_51wq7xybv5wrnmjxr0000gn/T/codecomprehender_repo_892j9eru/src/main/java/org/jboss/as/quickstarts/kitchensink/utils/Resources.java",
+      "/var/folders/rs/6z8_9p_51wq7xybv5wrnmjxr0000gn/T/codecomprehender_repo_892j9eru/src/main/java/org/jboss/as/quickstarts/kitchensink/controller/MemberController.java",
+      "/var/folders/rs/6z8_9p_51wq7xybv5wrnmjxr0000gn/T/codecomprehender_repo_892j9eru/src/main/java/org/jboss/as/quickstarts/kitchensink/model/Member.java",
+      "/var/folders/rs/6z8_9p_51wq7xybv5wrnmjxr0000gn/T/codecomprehender_repo_892j9eru/src/main/java/org/jboss/as/quickstarts/kitchensink/model/DatabaseSequence.java",
+      "/var/folders/rs/6z8_9p_51wq7xybv5wrnmjxr0000gn/T/codecomprehender_repo_892j9eru/src/main/java/org/jboss/as/quickstarts/kitchensink/service/MemberRegistration.java",
+      "/var/folders/rs/6z8_9p_51wq7xybv5wrnmjxr0000gn/T/codecomprehender_repo_892j9eru/src/main/java/org/jboss/as/quickstarts/kitchensink/data/MemberListProducer.java",
+      "/var/folders/rs/6z8_9p_51wq7xybv5wrnmjxr0000gn/T/codecomprehender_repo_892j9eru/src/main/java/org/jboss/as/quickstarts/kitchensink/data/MemberRepository.java",
+      "/var/folders/rs/6z8_9p_51wq7xybv5wrnmjxr0000gn/T/codecomprehender_repo_892j9eru/src/main/java/org/jboss/as/quickstarts/kitchensink/rest/MemberResourceRESTService.java",
+      "/var/folders/rs/6z8_9p_51wq7xybv5wrnmjxr0000gn/T/codecomprehender_repo_892j9eru/src/test/java/org/jboss/as/quickstarts/kitchensink/test/RemoteMemberRegistrationIT.java",
+      "/var/folders/rs/6z8_9p_51wq7xybv5wrnmjxr0000gn/T/codecomprehender_repo_892j9eru/src/test/java/org/jboss/as/quickstarts/kitchensink/test/MemberRegistrationIT.java",
+      "/var/folders/rs/6z8_9p_51wq7xybv5wrnmjxr0000gn/T/codecomprehender_repo_892j9eru/src/test/java/org/jboss/as/quickstarts/kitchensink/test/config/MongoDBConfig.java"
+    ],
+    "java_file_count": 13
+  },
+  "combined_visualization": "output/kitchensink/visualizations/repository_architecture.html"
+}

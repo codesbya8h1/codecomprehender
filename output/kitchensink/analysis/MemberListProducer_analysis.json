@@ -1,0 +1,25 @@
+{
+  "file_info": {
+    "name": "MemberListProducer.java",
+    "main_class": "MemberListProducer",
+    "file_type": "service",
+    "purpose": "Produces a list of members and observes changes to the member list.",
+    "is_entry_point": false,
+    "is_exit_point": false
+  },
+  "dependencies": [
+    {
+      "target_file": "MemberRepository.java",
+      "target_class": "MemberRepository",
+      "relationship_type": "instantiation",
+      "description": "Instantiates MemberRepository to retrieve member data."
+    },
+    {
+      "target_file": "Member.java",
+      "target_class": "Member",
+      "relationship_type": "import",
+      "description": "Imports the Member class to represent member entities."
+    }
+  ],
+  "provides_to": []
+}

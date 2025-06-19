@@ -1,0 +1,49 @@
+{
+  "file_info": {
+    "name": "Main.java",
+    "main_class": "Main",
+    "file_type": "entry_point",
+    "purpose": "Application entry point for the Spring Boot application",
+    "is_entry_point": true,
+    "is_exit_point": false
+  },
+  "dependencies": [
+    {
+      "target_file": "ApplicationConfiguration.java",
+      "target_class": "ApplicationConfiguration",
+      "relationship_type": "instantiation",
+      "description": "Main class runs the Spring Boot application using ApplicationConfiguration"
+    },
+    {
+      "target_file": "MemberRepository.java",
+      "target_class": "MemberRepository",
+      "relationship_type": "import",
+      "description": "Enables MongoDB repositories for MemberRepository"
+    },
+    {
+      "target_file": "MongoAutoConfiguration.java",
+      "target_class": "MongoAutoConfiguration",
+      "relationship_type": "import",
+      "description": "Imports MongoDB auto-configuration"
+    },
+    {
+      "target_file": "LoggerFactory.java",
+      "target_class": "LoggerFactory",
+      "relationship_type": "import",
+      "description": "Used for logging errors in the main method"
+    },
+    {
+      "target_file": "SpringBootServletInitializer.java",
+      "target_class": "SpringBootServletInitializer",
+      "relationship_type": "extends",
+      "description": "Main class extends SpringBootServletInitializer for web application support"
+    },
+    {
+      "target_file": "SpringApplication.java",
+      "target_class": "SpringApplication",
+      "relationship_type": "import",
+      "description": "Used to run the Spring Boot application"
+    }
+  ],
+  "provides_to": []
+}

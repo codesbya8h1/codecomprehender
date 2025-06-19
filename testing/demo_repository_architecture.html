@@ -1,0 +1,146 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        
+            <script src="lib/bindings/utils.js"></script>
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/vis-network/9.1.2/dist/dist/vis-network.min.css" integrity="sha512-WgxfT5LWjfszlPHXRmBWHkV2eceiWTOBvrKCNbdgDYTHrT2AeLCGbF4sZlZw3UMN3WtL0tGUoIAKsu8mllg/XA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/vis-network/9.1.2/dist/vis-network.min.js" integrity="sha512-LnvoEWDFrqGHlHmDD2101OrLcbsfkrzoSpvtSQtxK3RMnRV0eOkhhBN2dXHKRrUU8p2DGRTk35n4O8nWSVe1mQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+            
+        
+<center>
+<h1></h1>
+</center>
+
+<!-- <link rel="stylesheet" href="../node_modules/vis/dist/vis.min.css" type="text/css" />
+<script type="text/javascript" src="../node_modules/vis/dist/vis.js"> </script>-->
+        <link
+          href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6"
+          crossorigin="anonymous"
+        />
+        <script
+          src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
+          integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf"
+          crossorigin="anonymous"
+        ></script>
+
+
+        <center>
+          <h1></h1>
+        </center>
+        <style type="text/css">
+
+             #mynetwork {
+                 width: 100vw;
+                 height: 100vh;
+                 background-color: #ffffff;
+                 border: 1px solid lightgray;
+                 position: relative;
+                 float: left;
+             }
+
+             
+
+             
+
+             
+        </style>
+    
+        <style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: white;
+        }
+        #mynetworkid {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw !important;
+            height: 100vh !important;
+            border: none !important;
+            margin: 0 !important;
+            padding: 0 !important;
+        }
+        </style>
+        </head>
+
+
+    <body>
+        <div class="card" style="width: 100%">
+            
+            
+            <div id="mynetwork" class="card-body"></div>
+        </div>
+
+        
+        
+
+        <script type="text/javascript">
+
+              // initialize global variables.
+              var edges;
+              var nodes;
+              var allNodes;
+              var allEdges;
+              var nodeColors;
+              var originalNodes;
+              var network;
+              var container;
+              var options, data;
+              var filter = {
+                  item : '',
+                  property : '',
+                  value : []
+              };
+
+              
+
+              
+
+              // This method is responsible for drawing the graph, returns the drawn network
+              function drawGraph() {
+                  var container = document.getElementById('mynetwork');
+
+                  
+
+                  // parsing and collecting nodes and edges from the python
+                  nodes = new vis.DataSet([{"color": {"background": "#27ae60", "border": "#1e8449"}, "fixed": {"x": true, "y": true}, "font": {"color": "#2c3e50"}, "id": "MainApplication", "label": "\ud83d\ude80 MainApplication", "level": 0, "shape": "box", "size": 35, "title": "MainApplication.java\\nEntry Point\\nLevel: 0", "x": 0, "y": 0}, {"color": {"background": "#f39c12", "border": "#e67e22"}, "fixed": {"x": true, "y": true}, "font": {"color": "#2c3e50"}, "id": "UserController", "label": "\ud83c\udf9b\ufe0f UserController", "level": 1, "shape": "box", "size": 35, "title": "UserController.java\\nController\\nLevel: 1", "x": -150.0, "y": 200}, {"color": {"background": "#f39c12", "border": "#e67e22"}, "fixed": {"x": true, "y": true}, "font": {"color": "#2c3e50"}, "id": "OrderController", "label": "\ud83c\udf9b\ufe0f OrderController", "level": 1, "shape": "box", "size": 35, "title": "OrderController.java\\nController\\nLevel: 1", "x": 150.0, "y": 200}, {"color": {"background": "#3498db", "border": "#2980b9"}, "fixed": {"x": true, "y": true}, "font": {"color": "#2c3e50"}, "id": "UserService", "label": "\u2699\ufe0f UserService", "level": 2, "shape": "box", "size": 35, "title": "UserService.java\\nService\\nLevel: 2", "x": -300.0, "y": 400}, {"color": {"background": "#3498db", "border": "#2980b9"}, "fixed": {"x": true, "y": true}, "font": {"color": "#2c3e50"}, "id": "OrderService", "label": "\u2699\ufe0f OrderService", "level": 2, "shape": "box", "size": 35, "title": "OrderService.java\\nService\\nLevel: 2", "x": 0.0, "y": 400}, {"color": {"background": "#3498db", "border": "#2980b9"}, "fixed": {"x": true, "y": true}, "font": {"color": "#2c3e50"}, "id": "PaymentService", "label": "\u2699\ufe0f PaymentService", "level": 2, "shape": "box", "size": 35, "title": "PaymentService.java\\nService\\nLevel: 2", "x": 300.0, "y": 400}, {"color": {"background": "#9b59b6", "border": "#8e44ad"}, "fixed": {"x": true, "y": true}, "font": {"color": "#2c3e50"}, "id": "User", "label": "\ud83d\udce6 User", "level": 3, "shape": "box", "size": 35, "title": "User.java\\nModel\\nLevel: 3", "x": -150.0, "y": 600}, {"color": {"background": "#9b59b6", "border": "#8e44ad"}, "fixed": {"x": true, "y": true}, "font": {"color": "#2c3e50"}, "id": "Order", "label": "\ud83d\udce6 Order", "level": 3, "shape": "box", "size": 35, "title": "Order.java\\nModel\\nLevel: 3", "x": 150.0, "y": 600}, {"color": {"background": "#95a5a6", "border": "#7f8c8d"}, "fixed": {"x": true, "y": true}, "font": {"color": "#2c3e50"}, "id": "ValidationUtils", "label": "\ud83d\udd27 ValidationUtils", "level": 4, "shape": "box", "size": 35, "title": "ValidationUtils.java\\nUtility\\nLevel: 4", "x": -150.0, "y": 800}, {"color": {"background": "#8d6e63", "border": "#6d4c41"}, "fixed": {"x": true, "y": true}, "font": {"color": "#2c3e50"}, "id": "ConfigManager", "label": "\u2699\ufe0f ConfigManager", "level": 4, "shape": "box", "size": 35, "title": "ConfigManager.java\\nConfig\\nLevel: 4", "x": 150.0, "y": 800}, {"color": {"background": "#e74c3c", "border": "#c0392b"}, "fixed": {"x": true, "y": true}, "font": {"color": "#2c3e50"}, "id": "DatabaseConnector", "label": "\ud83c\udfaf DatabaseConnector", "level": 5, "shape": "box", "size": 35, "title": "DatabaseConnector.java\\nExit Point\\nLevel: 5", "x": -150.0, "y": 1000}, {"color": {"background": "#e74c3c", "border": "#c0392b"}, "fixed": {"x": true, "y": true}, "font": {"color": "#2c3e50"}, "id": "PaymentGateway", "label": "\ud83c\udfaf PaymentGateway", "level": 5, "shape": "box", "size": 35, "title": "PaymentGateway.java\\nExit Point\\nLevel: 5", "x": 150.0, "y": 1000}]);
+                  edges = new vis.DataSet([{"arrows": {"to": {"enabled": true, "scaleFactor": 1.2}}, "color": "#2c3e50", "from": "MainApplication", "smooth": false, "title": "uses: MainApplication \u2192 UserController", "to": "UserController", "width": 2}, {"arrows": {"to": {"enabled": true, "scaleFactor": 1.2}}, "color": "#2c3e50", "from": "MainApplication", "smooth": false, "title": "uses: MainApplication \u2192 ConfigManager", "to": "ConfigManager", "width": 2}, {"arrows": {"to": {"enabled": true, "scaleFactor": 1.2}}, "color": "#2c3e50", "from": "UserController", "smooth": false, "title": "uses: UserController \u2192 UserService", "to": "UserService", "width": 2}, {"arrows": {"to": {"enabled": true, "scaleFactor": 1.2}}, "color": "#2c3e50", "from": "UserController", "smooth": false, "title": "uses: UserController \u2192 ValidationUtils", "to": "ValidationUtils", "width": 2}, {"arrows": {"to": {"enabled": true, "scaleFactor": 1.2}}, "color": "#2c3e50", "from": "OrderController", "smooth": false, "title": "uses: OrderController \u2192 OrderService", "to": "OrderService", "width": 2}, {"arrows": {"to": {"enabled": true, "scaleFactor": 1.2}}, "color": "#2c3e50", "from": "OrderController", "smooth": false, "title": "uses: OrderController \u2192 PaymentService", "to": "PaymentService", "width": 2}, {"arrows": {"to": {"enabled": true, "scaleFactor": 1.2}}, "color": "#2c3e50", "from": "UserService", "smooth": false, "title": "uses: UserService \u2192 User", "to": "User", "width": 2}, {"arrows": {"to": {"enabled": true, "scaleFactor": 1.2}}, "color": "#2c3e50", "from": "UserService", "smooth": false, "title": "uses: UserService \u2192 DatabaseConnector", "to": "DatabaseConnector", "width": 2}, {"arrows": {"to": {"enabled": true, "scaleFactor": 1.2}}, "color": "#2c3e50", "from": "OrderService", "smooth": false, "title": "uses: OrderService \u2192 Order", "to": "Order", "width": 2}, {"arrows": {"to": {"enabled": true, "scaleFactor": 1.2}}, "color": "#2c3e50", "from": "OrderService", "smooth": false, "title": "uses: OrderService \u2192 PaymentService", "to": "PaymentService", "width": 2}, {"arrows": {"to": {"enabled": true, "scaleFactor": 1.2}}, "color": "#2c3e50", "from": "PaymentService", "smooth": false, "title": "uses: PaymentService \u2192 PaymentGateway", "to": "PaymentGateway", "width": 2}, {"arrows": {"to": {"enabled": true, "scaleFactor": 1.2}}, "color": "#2c3e50", "from": "Order", "smooth": false, "title": "uses: Order \u2192 User", "to": "User", "width": 2}]);
+
+                  nodeColors = {};
+                  allNodes = nodes.get({ returnType: "Object" });
+                  for (nodeId in allNodes) {
+                    nodeColors[nodeId] = allNodes[nodeId].color;
+                  }
+                  allEdges = edges.get({ returnType: "Object" });
+                  // adding nodes and edges to the graph
+                  data = {nodes: nodes, edges: edges};
+
+                  var options = {"layout": {"hierarchical": {"enabled": true, "direction": "UD", "sortMethod": "directed", "levelSeparation": 200, "nodeSpacing": 250, "treeSpacing": 300, "blockShifting": true, "edgeMinimization": true, "parentCentralization": true, "shakeTowards": "roots"}}, "physics": {"enabled": false}, "nodes": {"font": {"size": 16, "face": "Arial,sans-serif", "color": "white", "bold": true}, "margin": 15, "borderWidth": 2, "shadow": {"enabled": true, "color": "rgba(0,0,0,0.3)", "size": 10, "x": 2, "y": 2}, "widthConstraint": {"minimum": 120, "maximum": 200}, "heightConstraint": {"minimum": 50, "maximum": 70}}, "edges": {"arrows": {"to": {"enabled": true, "scaleFactor": 1.2, "type": "arrow"}}, "smooth": {"enabled": false, "type": "straightCross"}, "width": 2, "shadow": false, "color": {"inherit": false, "color": "#2c3e50"}}, "interaction": {"dragNodes": false, "dragView": false, "zoomView": false, "hover": false, "selectConnectedEdges": false, "selectable": false}};
+
+                  
+
+
+                  
+
+                  network = new vis.Network(container, data, options);
+
+                  
+
+                  
+
+                  
+
+
+                  
+
+                  return network;
+
+              }
+              drawGraph();
+        </script>
+    </body>
+</html>

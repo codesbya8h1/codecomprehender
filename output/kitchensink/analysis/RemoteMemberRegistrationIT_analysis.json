@@ -1,0 +1,73 @@
+{
+  "file_info": {
+    "name": "RemoteMemberRegistrationIT.java",
+    "main_class": "RemoteMemberRegistrationIT",
+    "file_type": "exit_point",
+    "purpose": "Integration test for remote member registration API",
+    "is_entry_point": false,
+    "is_exit_point": true
+  },
+  "dependencies": [
+    {
+      "target_file": "Member.java",
+      "target_class": "Member",
+      "relationship_type": "import",
+      "description": "Represents a member entity used in the test"
+    },
+    {
+      "target_file": "Json.java",
+      "target_class": "Json",
+      "relationship_type": "import",
+      "description": "Utility for creating JSON objects"
+    },
+    {
+      "target_file": "JSONObject.java",
+      "target_class": "JSONObject",
+      "relationship_type": "import",
+      "description": "Utility for handling JSON objects"
+    },
+    {
+      "target_file": "Assert.java",
+      "target_class": "Assert",
+      "relationship_type": "import",
+      "description": "JUnit assertion methods for testing"
+    },
+    {
+      "target_file": "AfterEach.java",
+      "target_class": "AfterEach",
+      "relationship_type": "import",
+      "description": "JUnit annotation for cleanup after each test"
+    },
+    {
+      "target_file": "Test.java",
+      "target_class": "Test",
+      "relationship_type": "import",
+      "description": "JUnit annotation for test methods"
+    },
+    {
+      "target_file": "HttpClient.java",
+      "target_class": "HttpClient",
+      "relationship_type": "import",
+      "description": "HTTP client for making requests"
+    },
+    {
+      "target_file": "HttpRequest.java",
+      "target_class": "HttpRequest",
+      "relationship_type": "import",
+      "description": "Represents an HTTP request"
+    },
+    {
+      "target_file": "HttpResponse.java",
+      "target_class": "HttpResponse",
+      "relationship_type": "import",
+      "description": "Represents an HTTP response"
+    },
+    {
+      "target_file": "Logger.java",
+      "target_class": "Logger",
+      "relationship_type": "import",
+      "description": "Logging utility for outputting logs"
+    }
+  ],
+  "provides_to": []
+}

@@ -1,0 +1,73 @@
+{
+  "file_info": {
+    "name": "Member.java",
+    "main_class": "Member",
+    "file_type": "model",
+    "purpose": "Represents a member entity with validation constraints for email, name, and phone number.",
+    "is_entry_point": false,
+    "is_exit_point": false
+  },
+  "dependencies": [
+    {
+      "target_file": "jakarta.validation.constraints.Digits",
+      "target_class": "Digits",
+      "relationship_type": "import",
+      "description": "Validation annotation for numeric constraints."
+    },
+    {
+      "target_file": "jakarta.validation.constraints.Email",
+      "target_class": "Email",
+      "relationship_type": "import",
+      "description": "Validation annotation for email format."
+    },
+    {
+      "target_file": "jakarta.validation.constraints.NotEmpty",
+      "target_class": "NotEmpty",
+      "relationship_type": "import",
+      "description": "Validation annotation to ensure the field is not empty."
+    },
+    {
+      "target_file": "jakarta.validation.constraints.NotNull",
+      "target_class": "NotNull",
+      "relationship_type": "import",
+      "description": "Validation annotation to ensure the field is not null."
+    },
+    {
+      "target_file": "jakarta.validation.constraints.Pattern",
+      "target_class": "Pattern",
+      "relationship_type": "import",
+      "description": "Validation annotation for regex pattern matching."
+    },
+    {
+      "target_file": "jakarta.validation.constraints.Size",
+      "target_class": "Size",
+      "relationship_type": "import",
+      "description": "Validation annotation for size constraints."
+    },
+    {
+      "target_file": "org.springframework.data.annotation.Id",
+      "target_class": "Id",
+      "relationship_type": "import",
+      "description": "Annotation to indicate the primary key of the entity."
+    },
+    {
+      "target_file": "org.springframework.data.annotation.Transient",
+      "target_class": "Transient",
+      "relationship_type": "import",
+      "description": "Annotation to indicate that a field is not to be persisted."
+    },
+    {
+      "target_file": "org.springframework.data.mongodb.core.index.Indexed",
+      "target_class": "Indexed",
+      "relationship_type": "import",
+      "description": "Annotation to indicate that a field should be indexed."
+    },
+    {
+      "target_file": "org.springframework.data.mongodb.core.mapping.Document",
+      "target_class": "Document",
+      "relationship_type": "import",
+      "description": "Annotation to indicate that this class is a MongoDB document."
+    }
+  ],
+  "provides_to": []
+}

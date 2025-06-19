@@ -1,0 +1,31 @@
+{
+  "file_info": {
+    "name": "MemberController.java",
+    "main_class": "MemberController",
+    "file_type": "controller",
+    "purpose": "Handles member registration and member list management.",
+    "is_entry_point": false,
+    "is_exit_point": false
+  },
+  "dependencies": [
+    {
+      "target_file": "MemberListProducer.java",
+      "target_class": "MemberListProducer",
+      "relationship_type": "instantiation",
+      "description": "Produces a list of members."
+    },
+    {
+      "target_file": "Member.java",
+      "target_class": "Member",
+      "relationship_type": "instantiation",
+      "description": "Represents a member entity."
+    },
+    {
+      "target_file": "MemberRegistration.java",
+      "target_class": "MemberRegistration",
+      "relationship_type": "instantiation",
+      "description": "Handles the registration of new members."
+    }
+  ],
+  "provides_to": []
+}

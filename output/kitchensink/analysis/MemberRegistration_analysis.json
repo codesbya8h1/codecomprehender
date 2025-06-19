@@ -1,0 +1,49 @@
+{
+  "file_info": {
+    "name": "MemberRegistration.java",
+    "main_class": "MemberRegistration",
+    "file_type": "service",
+    "purpose": "Handles the registration of members and interacts with the database.",
+    "is_entry_point": false,
+    "is_exit_point": false
+  },
+  "dependencies": [
+    {
+      "target_file": "MemberRepository.java",
+      "target_class": "MemberRepository",
+      "relationship_type": "instantiation",
+      "description": "Used to perform database operations related to members."
+    },
+    {
+      "target_file": "DatabaseSequence.java",
+      "target_class": "DatabaseSequence",
+      "relationship_type": "instantiation",
+      "description": "Represents the database sequence for generating unique member IDs."
+    },
+    {
+      "target_file": "Member.java",
+      "target_class": "Member",
+      "relationship_type": "instantiation",
+      "description": "Represents the member entity being registered."
+    },
+    {
+      "target_file": "MongoOperations.java",
+      "target_class": "MongoOperations",
+      "relationship_type": "instantiation",
+      "description": "Used for MongoDB operations."
+    },
+    {
+      "target_file": "MongoWriteException.java",
+      "target_class": "MongoWriteException",
+      "relationship_type": "import",
+      "description": "Exception thrown for MongoDB write errors."
+    },
+    {
+      "target_file": "Logger.java",
+      "target_class": "Logger",
+      "relationship_type": "instantiation",
+      "description": "Used for logging information and errors."
+    }
+  ],
+  "provides_to": []
+}

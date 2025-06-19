@@ -1,0 +1,31 @@
+{
+  "file_info": {
+    "name": "MongoDBConfig.java",
+    "main_class": "MongoDBConfig",
+    "file_type": "config",
+    "purpose": "Configuration class for setting up a MongoDB container for testing.",
+    "is_entry_point": false,
+    "is_exit_point": true
+  },
+  "dependencies": [
+    {
+      "target_file": "MongoDBContainer.java",
+      "target_class": "MongoDBContainer",
+      "relationship_type": "import",
+      "description": "Imports MongoDBContainer class from Testcontainers for managing MongoDB instances."
+    },
+    {
+      "target_file": "Configuration.java",
+      "target_class": "Configuration",
+      "relationship_type": "import",
+      "description": "Imports Configuration annotation from Spring framework to define this class as a configuration class."
+    },
+    {
+      "target_file": "Container.java",
+      "target_class": "Container",
+      "relationship_type": "import",
+      "description": "Imports Container annotation from Testcontainers to manage lifecycle of the MongoDB container."
+    }
+  ],
+  "provides_to": []
+}

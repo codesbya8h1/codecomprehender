@@ -1,0 +1,47 @@
+{
+  "repository_info": {
+    "path": "/var/folders/rs/6z8_9p_51wq7xybv5wrnmjxr0000gn/T/codecomprehender_repo_ytt418mg",
+    "name": "kitchensink",
+    "java_files": [
+      "/var/folders/rs/6z8_9p_51wq7xybv5wrnmjxr0000gn/T/codecomprehender_repo_ytt418mg/src/main/java/org/jboss/as/quickstarts/kitchensink/Main.java",
+      "/var/folders/rs/6z8_9p_51wq7xybv5wrnmjxr0000gn/T/codecomprehender_repo_ytt418mg/src/main/java/org/jboss/as/quickstarts/kitchensink/config/ApplicationConfiguration.java",
+      "/var/folders/rs/6z8_9p_51wq7xybv5wrnmjxr0000gn/T/codecomprehender_repo_ytt418mg/src/main/java/org/jboss/as/quickstarts/kitchensink/utils/Resources.java",
+      "/var/folders/rs/6z8_9p_51wq7xybv5wrnmjxr0000gn/T/codecomprehender_repo_ytt418mg/src/main/java/org/jboss/as/quickstarts/kitchensink/controller/MemberController.java",
+      "/var/folders/rs/6z8_9p_51wq7xybv5wrnmjxr0000gn/T/codecomprehender_repo_ytt418mg/src/main/java/org/jboss/as/quickstarts/kitchensink/model/Member.java",
+      "/var/folders/rs/6z8_9p_51wq7xybv5wrnmjxr0000gn/T/codecomprehender_repo_ytt418mg/src/main/java/org/jboss/as/quickstarts/kitchensink/model/DatabaseSequence.java",
+      "/var/folders/rs/6z8_9p_51wq7xybv5wrnmjxr0000gn/T/codecomprehender_repo_ytt418mg/src/main/java/org/jboss/as/quickstarts/kitchensink/service/MemberRegistration.java",
+      "/var/folders/rs/6z8_9p_51wq7xybv5wrnmjxr0000gn/T/codecomprehender_repo_ytt418mg/src/main/java/org/jboss/as/quickstarts/kitchensink/data/MemberListProducer.java",
+      "/var/folders/rs/6z8_9p_51wq7xybv5wrnmjxr0000gn/T/codecomprehender_repo_ytt418mg/src/main/java/org/jboss/as/quickstarts/kitchensink/data/MemberRepository.java",
+      "/var/folders/rs/6z8_9p_51wq7xybv5wrnmjxr0000gn/T/codecomprehender_repo_ytt418mg/src/main/java/org/jboss/as/quickstarts/kitchensink/rest/MemberResourceRESTService.java",
+      "/var/folders/rs/6z8_9p_51wq7xybv5wrnmjxr0000gn/T/codecomprehender_repo_ytt418mg/src/test/java/org/jboss/as/quickstarts/kitchensink/test/RemoteMemberRegistrationIT.java",
+      "/var/folders/rs/6z8_9p_51wq7xybv5wrnmjxr0000gn/T/codecomprehender_repo_ytt418mg/src/test/java/org/jboss/as/quickstarts/kitchensink/test/MemberRegistrationIT.java",
+      "/var/folders/rs/6z8_9p_51wq7xybv5wrnmjxr0000gn/T/codecomprehender_repo_ytt418mg/src/test/java/org/jboss/as/quickstarts/kitchensink/test/config/MongoDBConfig.java"
+    ],
+    "java_file_count": 13
+  },
+  "architecture_summary": {
+    "total_files": 13,
+    "total_relationships": 31,
+    "file_types": {
+      "entry_point": 2,
+      "config": 3,
+      "controller": 2,
+      "model": 1,
+      "data": 2,
+      "service": 2,
+      "exit_point": 1
+    },
+    "entry_points": [
+      "Main",
+      "MemberResourceRESTService",
+      "MemberRegistrationIT"
+    ],
+    "exit_points": [
+      "RemoteMemberRegistrationIT",
+      "MongoDBConfig"
+    ],
+    "architecture_pattern": "MVC (Model-View-Controller)"
+  },
+  "visualization_type": "repository_architecture",
+  "description": "High-level architectural view showing file-to-file relationships"
+}

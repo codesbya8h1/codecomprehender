@@ -1,0 +1,43 @@
+{
+  "file_info": {
+    "name": "MemberRegistrationIT.java",
+    "main_class": "MemberRegistrationIT",
+    "file_type": "entry_point",
+    "purpose": "Integration test for member registration functionality",
+    "is_entry_point": true,
+    "is_exit_point": false
+  },
+  "dependencies": [
+    {
+      "target_file": "Main.java",
+      "target_class": "Main",
+      "relationship_type": "import",
+      "description": "Main application class for bootstrapping the application"
+    },
+    {
+      "target_file": "Member.java",
+      "target_class": "Member",
+      "relationship_type": "import",
+      "description": "Data model representing a member"
+    },
+    {
+      "target_file": "MemberRegistration.java",
+      "target_class": "MemberRegistration",
+      "relationship_type": "import",
+      "description": "Service class for handling member registration logic"
+    },
+    {
+      "target_file": "MongoDBConfig.java",
+      "target_class": "MongoDBConfig",
+      "relationship_type": "import",
+      "description": "Configuration class for MongoDB settings"
+    },
+    {
+      "target_file": "Logger.java",
+      "target_class": "Logger",
+      "relationship_type": "import",
+      "description": "Logging utility used in the test"
+    }
+  ],
+  "provides_to": []
+}

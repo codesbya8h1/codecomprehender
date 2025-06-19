@@ -1,0 +1,37 @@
+{
+  "file_info": {
+    "name": "MemberRepository.java",
+    "main_class": "MemberRepository",
+    "file_type": "data",
+    "purpose": "Repository interface for accessing Member data from MongoDB",
+    "is_entry_point": false,
+    "is_exit_point": false
+  },
+  "dependencies": [
+    {
+      "target_file": "Member.java",
+      "target_class": "Member",
+      "relationship_type": "import",
+      "description": "Represents the Member entity used in the repository"
+    },
+    {
+      "target_file": "MongoRepository.java",
+      "target_class": "MongoRepository",
+      "relationship_type": "extends",
+      "description": "Base interface for MongoDB repository functionality"
+    },
+    {
+      "target_file": "Repository.java",
+      "target_class": "Repository",
+      "relationship_type": "import",
+      "description": "Indicates that this interface is a Spring Data repository"
+    }
+  ],
+  "provides_to": [
+    {
+      "interface_name": "MemberRepository",
+      "service_type": "data_access",
+      "description": "Provides data access methods for Member entities"
+    }
+  ]
+}

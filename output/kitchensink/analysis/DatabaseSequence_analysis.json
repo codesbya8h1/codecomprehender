@@ -1,0 +1,31 @@
+{
+  "file_info": {
+    "name": "DatabaseSequence.java",
+    "main_class": "DatabaseSequence",
+    "file_type": "data",
+    "purpose": "Represents a database sequence entity for MongoDB.",
+    "is_entry_point": false,
+    "is_exit_point": false
+  },
+  "dependencies": [
+    {
+      "target_file": "Id.java",
+      "target_class": "Id",
+      "relationship_type": "import",
+      "description": "Annotation used to mark the id field as the primary key."
+    },
+    {
+      "target_file": "Document.java",
+      "target_class": "Document",
+      "relationship_type": "import",
+      "description": "Annotation used to specify the MongoDB collection for this entity."
+    },
+    {
+      "target_file": "BigInteger.java",
+      "target_class": "BigInteger",
+      "relationship_type": "import",
+      "description": "Used as the type for the sequence field."
+    }
+  ],
+  "provides_to": []
+}

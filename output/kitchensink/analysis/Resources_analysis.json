@@ -1,0 +1,49 @@
+{
+  "file_info": {
+    "name": "Resources.java",
+    "main_class": "Resources",
+    "file_type": "config",
+    "purpose": "Provides configuration for producing Logger instances.",
+    "is_entry_point": false,
+    "is_exit_point": false
+  },
+  "dependencies": [
+    {
+      "target_file": "InjectionPoint.java",
+      "target_class": "InjectionPoint",
+      "relationship_type": "import",
+      "description": "Used for obtaining the context of the injection point."
+    },
+    {
+      "target_file": "Bean.java",
+      "target_class": "Bean",
+      "relationship_type": "import",
+      "description": "Annotation used to define a bean in the Spring context."
+    },
+    {
+      "target_file": "Configuration.java",
+      "target_class": "Configuration",
+      "relationship_type": "import",
+      "description": "Annotation indicating that this class provides Spring configuration."
+    },
+    {
+      "target_file": "Scope.java",
+      "target_class": "Scope",
+      "relationship_type": "import",
+      "description": "Annotation used to define the scope of the bean."
+    },
+    {
+      "target_file": "Logger.java",
+      "target_class": "Logger",
+      "relationship_type": "import",
+      "description": "Used for logging purposes."
+    }
+  ],
+  "provides_to": [
+    {
+      "interface_name": "Logger",
+      "service_type": "utility",
+      "description": "Provides Logger instances for dependency injection."
+    }
+  ]
+}
